@@ -2,13 +2,15 @@ import './home.css'
 
 import './HomeButton.jsx'
 import HomeButton from './HomeButton.jsx'
+import {faSync, faUsers, faSheetPlastic, faComputer} from '@fortawesome/free-solid-svg-icons'
 
 const Home = () => {
   return (
     <div className='content'>
-      <HomeButton text='Profiles' link='/profiles' />
-      <HomeButton text='Templates' link='/profiles' />
-      <HomeButton text='Generate' link='/profiles' />
+      <HomeButton icon={faUsers} text='Profiles' link='/profiles' />
+      <HomeButton icon={faSheetPlastic} text='Templates' link='/profiles' />
+      <HomeButton icon={faComputer} text='Generate' link='/profiles' />
+      <HomeButton icon={faSync} text='Sync' link='/profiles' />
     </div>
   )
 }
