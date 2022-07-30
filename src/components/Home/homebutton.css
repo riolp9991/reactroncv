@@ -1,0 +1,18 @@
+.home-btn {
+    position: relative;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 3px 3px 12px rgba(39,37,37,0.2);
+    font-size: 2rem;
+    border: solid 3px #EB4D4D;
+    border-radius: 12px 30px;
+    transition: .3s;
+    color: #EB4D4D;
+}
+
+.home-btn:focus,
+.home-btn:hover{
+    background: #EB4D4D;
+    color: white;
+}
