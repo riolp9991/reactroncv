@@ -12,7 +12,7 @@ const LandingPage = (props) => {
           fontSize="1.4em"
           margin="10px 0px 0px 10px"
           text="películas"
-          to="/profiles"
+          to="/"
           icon={faVideo}
         />
       </div>
@@ -21,7 +21,7 @@ const LandingPage = (props) => {
           margin="10px 0px 0px 10px"
           fontSize="1.4em"
           text="Configuración"
-          to="/profiles"
+          to="/"
           icon={faCogs}
         />
       </div>
