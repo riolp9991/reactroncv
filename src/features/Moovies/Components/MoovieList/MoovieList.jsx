@@ -4,7 +4,7 @@ import MoovieTile from "../MoovieTile/MoovieTile";
 
 const MoovieList = () => {
   let testTiles = [];
-  for (let i = 0; i <= 60; i++) {
+  for (let i = 0; i <= 14; i++) {
     testTiles.push(<MoovieTile />);
   }
 

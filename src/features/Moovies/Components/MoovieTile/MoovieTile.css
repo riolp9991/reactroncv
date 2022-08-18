@@ -8,7 +8,7 @@
     /*aspect-ratio: 16/9;*/
     box-sizing: border-box;
     cursor: pointer;
-    transition: ease-in-out 0.5s;
+    transition: ease 0.3s;
     position: relative;
 }
 

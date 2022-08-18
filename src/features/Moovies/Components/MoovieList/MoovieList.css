@@ -1,5 +1,6 @@
 .moovie-list {
     margin-top: 20px;
+    min-height: 100vh;
     background: #383d46;
     padding: 3em;
     width: 100%;
