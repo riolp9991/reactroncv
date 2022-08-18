@@ -9,10 +9,22 @@ const FlatButton = ({
   margin = "0px 0px",
   borderColor = "#ec770a",
   iconColor = "#eeba8a",
+  reverseIcon = false,
   onClick = () => {
     console.log(text);
   },
 }) => {
+  const iconFirst = (
+    <>
+      <FontAwesomeIcon icon={icon} /> {text}{" "}
+    </>
+  );
+  const textFirst = (
+    <>
+      {text} <FontAwesomeIcon icon={icon} />
+    </>
+  );
+
   return (
     <div
       className="flat-button"
@@ -27,7 +39,7 @@ const FlatButton = ({
         <span></span>
         <span></span>
         <span></span>
-        {text} <FontAwesomeIcon icon={icon} />
+        {reverseIcon ? iconFirst : textFirst}
       </button>
     </div>
   );
