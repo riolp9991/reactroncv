@@ -47,14 +47,15 @@ app.on("activate", () => {
 //DATABASE MANAGEMENT
 
 const { Moovie } = require("../src/database/models/moovies");
-const { User } = require("../src/database/models/profiles");
+const { seedMoovies } = require("../src/database/seeders/mooves.seeder");
 
 const forceSync = true;
 const sync = async () => {
-    //await User.sync({ force: forceSync });
-    Moovie.sync({ force: forceSync });
-
+    await Moovie.sync({ force: forceSync });
     console.log("Models sync");
+    console.log("Seeding");
+    await seedMoovies();
+    console.log("Test moovies seeded");
 };
 
 connectDB();
