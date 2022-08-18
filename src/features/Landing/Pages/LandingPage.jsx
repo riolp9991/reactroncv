@@ -4,7 +4,7 @@ import { faVideo, faCogs } from "@fortawesome/free-solid-svg-icons";
 
 import { FlatLink } from "../../../components/FlatButton/index";
 
-const LandingPage = (props) => {
+const LandingPage = () => {
   return (
     <>
       <div>
@@ -12,7 +12,7 @@ const LandingPage = (props) => {
           fontSize="1.4em"
           margin="10px 0px 0px 10px"
           text="películas"
-          to="/"
+          to="/moovies"
           icon={faVideo}
         />
       </div>
