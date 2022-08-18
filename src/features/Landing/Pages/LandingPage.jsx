@@ -2,24 +2,26 @@ import "./landing-page.css";
 
 import { faVideo, faCogs } from "@fortawesome/free-solid-svg-icons";
 
-import GlassButton from "../../../components/GlassButton/GlassButton";
+import { FlatLink } from "../../../components/FlatButton/index";
 
 const LandingPage = (props) => {
   return (
     <>
       <div>
-        <GlassButton
+        <FlatLink
           fontSize="1.4em"
           margin="10px 0px 0px 10px"
-          text="Peliculas"
+          text="películas"
+          to="/profiles"
           icon={faVideo}
         />
       </div>
       <div>
-        <GlassButton
+        <FlatLink
           margin="10px 0px 0px 10px"
           fontSize="1.4em"
-          text="Configuracion"
+          text="Configuración"
+          to="/profiles"
           icon={faCogs}
         />
       </div>

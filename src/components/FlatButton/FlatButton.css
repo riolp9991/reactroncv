@@ -24,13 +24,13 @@
 
 .flat-button button:hover svg,
 .flat-button button:focus svg {
-    color: #eeba8a;
+    color: var(--flat-button-icon-color);
 }
 
 .flat-button button span {
     display: block;
     position: absolute;
-    background: #ec770a;
+    background: var(--flat-button-border-color);
 }
 
 .flat-button button span:nth-child(1) {
