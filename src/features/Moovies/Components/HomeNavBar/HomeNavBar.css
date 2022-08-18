@@ -1,6 +1,11 @@
 .moovies-home-nav {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  background: var(--solid-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background: var(--solid-bg);
+    z-index: 200;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 }

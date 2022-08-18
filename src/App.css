@@ -1,5 +1,6 @@
 :root {
     --solid-bg: #262c37;
+    --accent: #ec770a;
 }
 
 body {
@@ -16,10 +17,6 @@ body {
         hsl(37deg 67% 50%) 95%,
         hsl(51deg 76% 45%) 100%
     );
-}
-
-.App {
-    /*text-align: center;*/
 }
 
 .App-logo {
@@ -44,20 +41,16 @@ body {
     color: white;
 }
 
-.App-link {
-    color: #61dafb;
+::-webkit-scrollbar {
+    height: 2px;
+    width: 2px;
+    background: var(--solid-bg);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+::-webkit-scrollbar-thumb {
+    background: #a245bb;
 }
 
-tr td:last-child {
-    width: 1%;
-    white-space: nowrap;
+::-webkit-scrollbar-corner {
+    background: var(--solid-bg);
 }

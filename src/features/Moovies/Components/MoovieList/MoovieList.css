@@ -1,0 +1,9 @@
+.moovie-list {
+    margin-top: 20px;
+    background: #383d46;
+    padding: 3em;
+    width: 100%;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+}
