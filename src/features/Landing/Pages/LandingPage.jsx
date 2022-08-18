@@ -9,8 +9,8 @@ const LandingPage = () => {
     <>
       <div>
         <FlatLink
-          fontSize="1.4em"
-          margin="10px 0px 0px 10px"
+          fontSize="2.0em"
+          margin="20px 0px 0px 20px"
           text="películas"
           to="/moovies"
           icon={faVideo}
@@ -18,8 +18,8 @@ const LandingPage = () => {
       </div>
       <div>
         <FlatLink
-          margin="10px 0px 0px 10px"
-          fontSize="1.4em"
+          margin="20px 0px 0px 20px"
+          fontSize="2.0em"
           text="Configuración"
           to="/"
           icon={faCogs}
