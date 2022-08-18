@@ -1,0 +1,6 @@
+.moovies-home-nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background: var(--solid-bg);
+}

@@ -1,10 +1,11 @@
 import { FlatLink } from "../../../components/FlatButton/index";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import HomeNavBar from "../Components/HomeNavBar/HomeNavBar";
 
 const MooviesPage = (props) => {
   return (
     <div>
-      <FlatLink to="/" text="Inicio" icon={faHome} reverseIcon={true} />
+      <HomeNavBar />
     </div>
   );
 };
