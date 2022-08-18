@@ -8,6 +8,7 @@
     /*aspect-ratio: 16/9;*/
     box-sizing: border-box;
     display: flex;
+    max-height: 200px;
     align-items: center;
     justify-content: center;
     cursor: pointer;

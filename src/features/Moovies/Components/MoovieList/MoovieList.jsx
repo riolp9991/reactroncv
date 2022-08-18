@@ -8,7 +8,12 @@ const MoovieList = () => {
     testTiles.push(<MoovieTile />);
   }
 
-  return <div className="moovie-list">{testTiles}</div>;
+  return (
+    <div className="moovie-list">
+      <MoovieTile text="Nombre" />
+      <MoovieTile text="Nombre de la pelicula" />
+    </div>
+  );
 };
 
 export default MoovieList;
