@@ -7,6 +7,9 @@
     width: 100%;
     /*aspect-ratio: 16/9;*/
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: ease 0.3s;
     position: relative;
