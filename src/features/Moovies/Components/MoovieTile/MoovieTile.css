@@ -17,8 +17,8 @@
 }
 
 .moovie-tile:hover {
-    border-color: #9807ec;
-    color: #b083d7;
+    border-color: var(--purple-accent);
+    color: var(--purple-text);
 }
 
 .moovie-tile h1 {
@@ -26,7 +26,7 @@
     margin: 0;
 }
 
-.moovie-tile span {
+.moovie-tile span.year {
     position: absolute;
     color: white;
     top: 0;
@@ -34,4 +34,21 @@
     padding: 2px 5px;
     font-size: 0.7em;
     background: rgba(147, 12, 207, 0.56);
+}
+
+.moovie-tile span.openWeb {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+
+.moovie-tile span.openWeb:hover {
+    background: var(--purple-accent);
+    bottom: 0;
+    left: 0;
+    color: white;
+    padding: 10px 20px;
 }
