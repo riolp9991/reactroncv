@@ -44,6 +44,7 @@ const MoovieList = () => {
         console.log(item.dataValues.title);
         return (
           <MoovieTile
+            link={item.dataValues.link}
             year={item.dataValues.year}
             key={item.dataValues.id}
             text={item.dataValues.title}

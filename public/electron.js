@@ -66,3 +66,5 @@ sync();
 require("../src/database/comunicators/profiles.main");
 //Moovies Connector
 require("../src/database/comunicators/moovies/moovies.main");
+//Links Connector
+require("../src/lib/communicators/links/links.main");
