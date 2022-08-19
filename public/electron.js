@@ -48,6 +48,7 @@ app.on("activate", () => {
 
 const { Moovie } = require("../src/database/models/moovies");
 const { seedMoovies } = require("../src/database/seeders/mooves.seeder");
+const { Op } = require("sequelize");
 
 const forceSync = true;
 const sync = async () => {
@@ -62,5 +63,6 @@ connectDB();
 sync();
 
 //Load Conectors
-
 require("../src/database/comunicators/profiles.main");
+//Moovies Connector
+require("../src/database/comunicators/moovies/moovies.main");
