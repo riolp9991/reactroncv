@@ -1,6 +1,8 @@
 :root {
     --solid-bg: #262c37;
     --accent: #ec770a;
+    --purple-accent: #9807ec;
+    --purple-text: #b083d7;
 }
 
 body {

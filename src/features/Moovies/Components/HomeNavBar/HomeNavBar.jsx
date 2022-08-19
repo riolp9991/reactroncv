@@ -9,15 +9,15 @@ const HomeNavBar = (props) => {
       <FlatLink
         fontSize="0.9em"
         to="/"
-        //borderColor="#D81A1A"
-        //iconColor="#DA7575"
+        borderColor="var(--purple-accent)"
+        iconColor="var(--purple-text)"
         text="Inicio"
         icon={faHome}
         reverseIcon={true}
       />
       <FlatButton
-        //borderColor="#E615BE"
-        //iconColor="#D38FC6"
+        borderColor="var(--purple-accent)"
+        iconColor="var(--purple-text)"
         fontSize="0.9em"
         text="Filtrar"
         icon={faSearch}
