@@ -38,6 +38,7 @@
 
 .moovie-tile span.float-tile {
     position: absolute;
+    font-size: 0.8em;
     color: rgba(255, 255, 255, 0.1);
     cursor: pointer;
     transition: cubic-bezier(0.52, 0.17, 0, 0.82) 0.3s;
@@ -45,8 +46,9 @@
 
 .moovie-tile span.float-tile:hover {
     background: var(--purple-accent);
+    font-size: 1em;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 17px;
 }
 
 .moovie-tile span.web {
