@@ -2,7 +2,7 @@ import "./MoovieTile.css";
 
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faClipboard } from "@fortawesome/free-solid-svg-icons";
 
 const MoovieTile = ({
   text = "Nombre de la pelicula",
@@ -22,8 +22,11 @@ const MoovieTile = ({
   return (
     <div className="moovie-tile" onClick={redirect}>
       <span className="year">{year}</span>
-      <span className="openWeb" onClick={openWebClick}>
+      <span className="float-tile web" onClick={openWebClick}>
         <FontAwesomeIcon icon={faEye} />
+      </span>
+      <span className="float-tile clip" onClick={openWebClick}>
+        <FontAwesomeIcon icon={faClipboard} />
       </span>
       <h1>{text}</h1>
     </div>
