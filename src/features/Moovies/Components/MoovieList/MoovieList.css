@@ -1,10 +1,31 @@
 .moovie-list {
-    margin-top: 20px;
-    min-height: 100vh;
-    background: #383d46;
-    padding: 3em;
-    width: 100%;
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(4, 1fr);
+  min-height: 100vh;
+  background: #383d46;
+  padding: 3em;
+  width: 100%;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.float-text-empty {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.float-text-empty h1 {
+  font-size: 1.2em;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.float-text-empty .content {
+  max-width: 470px;
 }

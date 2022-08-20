@@ -50,13 +50,13 @@ const { Moovie } = require("../src/database/models/moovies");
 const { seedMoovies } = require("../src/database/seeders/mooves.seeder");
 const { Op } = require("sequelize");
 
-const forceSync = true;
+const forceSync = false;
 const sync = async () => {
     await Moovie.sync({ force: forceSync });
     console.log("Models sync");
-    console.log("Seeding");
-    await seedMoovies();
-    console.log("Test moovies seeded");
+    //console.log("Seeding");
+    //await seedMoovies();
+    //console.log("Test moovies seeded");
 };
 
 connectDB();

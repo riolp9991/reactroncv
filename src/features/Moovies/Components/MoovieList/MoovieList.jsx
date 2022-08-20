@@ -1,12 +1,35 @@
 import "./MoovieList.css";
 
 import MoovieTile from "../MoovieTile/MoovieTile";
+import FlatLink from "../../../../components/FlatButton/FlatLink";
 import { findMoovies } from "../../../../database/comunicators/moovies/moovies.render";
+import { faCogs } from "@fortawesome/free-solid-svg-icons";
 
 import { useEffect, useState } from "react";
 
 const MoovieList = () => {
   const [moovies, setMoovies] = useState([]);
+
+  const TextForEmpty = () =>
+    moovies.length === 0 ? (
+      <div className="float-text-empty">
+        <div className="content">
+          <h1>
+            No se han encontrado peliculas prueba sincronizando la base de datos
+          </h1>
+          <FlatLink
+            icon={faCogs}
+            text="Ir a configuracion"
+            margin="10px 0px 0px 0px"
+            reverseIcon={true}
+            borderColor="var(--purple-accent)"
+            iconColor="var(--purple-text)"
+          />
+        </div>
+      </div>
+    ) : (
+      <></>
+    );
 
   const startMooviesArray = async () => {
     const data = await await SearchMoovies();
@@ -39,19 +62,22 @@ const MoovieList = () => {
   }
 
   return (
-    <div className="moovie-list">
-      {moovies.map((item) => {
-        console.log(item.dataValues.title);
-        return (
-          <MoovieTile
-            link={item.dataValues.link}
-            year={item.dataValues.year}
-            key={item.dataValues.id}
-            text={item.dataValues.title}
-          />
-        );
-      })}
-    </div>
+    <>
+      <TextForEmpty />
+      <div className="moovie-list">
+        {moovies.map((item) => {
+          console.log(item.dataValues.title);
+          return (
+            <MoovieTile
+              link={item.dataValues.link}
+              year={item.dataValues.year}
+              key={item.dataValues.id}
+              text={item.dataValues.title}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
 
