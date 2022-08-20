@@ -4,13 +4,13 @@ import MoovieFilter from "../Components/MoovieFilter/MoovieFilter";
 import useMoovieStore from "../Hooks/useMovieStore";
 
 const MooviesPage = ({}) => {
-  const getTitle = useMoovieStore((state) => state.searchTitle);
+  const title = useMoovieStore((state) => state.searchTitle);
 
   return (
     <div>
       <HomeNavBar hidden={<MoovieFilter />} />
-      <h1>{getTitle}</h1>
       <MoovieList />
+      <h1>{title}</h1>
     </div>
   );
 };
