@@ -6,11 +6,15 @@ import { findMoovies } from "../../../../database/comunicators/moovies/moovies.r
 import { faCogs } from "@fortawesome/free-solid-svg-icons";
 import useMoovieStore from "../../Hooks/useMoovieStore";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 const MoovieList = () => {
   const [moovies, setMoovies] = useState([]);
   //const titleToSearch = useMoovieStore((state) => state.searchTitle);
+  const titleToSearch = useMemo(
+    useMoovieStore((state) => state.searchTitle),
+    state
+  );
 
   const TextForEmpty = () =>
     moovies.length === 0 ? (
