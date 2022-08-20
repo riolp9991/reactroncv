@@ -1,7 +1,7 @@
 import "./HomeNavBar.css";
-import { FlatLink, FlatButton } from "../../../../components/FlatButton/index";
 
 import { useState } from "react";
+import { FlatLink, FlatButton } from "../../../../components/FlatButton/index";
 import {
   faHome,
   faSearch,
