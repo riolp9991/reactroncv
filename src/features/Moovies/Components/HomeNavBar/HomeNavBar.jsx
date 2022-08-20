@@ -1,13 +1,13 @@
 import "./HomeNavBar.css";
-
 import { FlatLink, FlatButton } from "../../../../components/FlatButton/index";
+
+import { useState } from "react";
 import {
   faHome,
   faSearch,
   faRedo,
   faMinus,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 const HomeNavBar = ({ hidden }) => {
   let [showHidden, setHidden] = useState(false);

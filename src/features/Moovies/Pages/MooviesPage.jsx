@@ -1,14 +1,22 @@
-import { FlatLink } from "../../../components/FlatButton/index";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
 import HomeNavBar from "../Components/HomeNavBar/HomeNavBar";
 import MoovieList from "../Components/MoovieList/MoovieList";
 import MoovieFilter from "../Components/MoovieFilter/MoovieFilter";
 
-const MooviesPage = (props) => {
-  const filter = <MoovieFilter />;
+import { useState } from "react";
+const MooviesPage = ({}) => {
+  const [title, setTitle] = useState("");
+  const [year, setYear] = useState("");
+
+  let filter = (
+    <MoovieFilter
+      key="moovieFilter"
+      setTitleParent={setTitle}
+      setYearParent={setYear}
+    />
+  );
   return (
     <div>
-      <HomeNavBar hidden={filter} />
+      <HomeNavBar key="MoovieNav" hidden={filter} />
       <MoovieList />
     </div>
   );

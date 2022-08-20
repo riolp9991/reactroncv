@@ -1,6 +1,8 @@
 import "./CustomText.css";
 
 const CustomText = ({
+  value,
+  setValue,
   placeholder = "",
   name = "",
   id = "",
@@ -10,8 +12,15 @@ const CustomText = ({
   placeholderColor = "var(--accent-text)",
   type = "text",
 }) => {
+  const changeValue = (e) => {
+    console.log(e.target.value);
+    setValue(e.target.value);
+  };
+
   return (
     <input
+      value={value}
+      onChange={changeValue}
       className="custom-text-field"
       type={type}
       name={name}
