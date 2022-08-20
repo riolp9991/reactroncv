@@ -5,13 +5,15 @@ const CustomText = ({
   name = "",
   id = "",
   width = "auto",
+  textAlign = "left",
   borderColor = "var(--accent)",
   placeholderColor = "var(--accent-text)",
+  type = "text",
 }) => {
   return (
     <input
       className="custom-text-field"
-      type="text"
+      type={type}
       name={name}
       id={id}
       placeholder={placeholder}
@@ -19,6 +21,7 @@ const CustomText = ({
         width: width,
         "--input-border-color": borderColor,
         "--input-placeholder-color": placeholderColor,
+        "--input-text-align": textAlign,
       }}
     />
   );

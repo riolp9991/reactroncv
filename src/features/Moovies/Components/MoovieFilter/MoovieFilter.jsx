@@ -9,7 +9,12 @@ const MoovieFilter = (props) => {
     <div className="moovie-filter">
       <div className="section">
         <CustomText width="100%" placeholder="Titulo" />
-        <CustomText width="260px" placeholder="Año De Estreno" />
+        <CustomText
+          textAlign="center"
+          type="number"
+          width="260px"
+          placeholder="Año De Estreno"
+        />
       </div>
       <div className="section">
         <FlatButton text="" icon={faSearch} />

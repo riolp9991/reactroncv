@@ -5,6 +5,7 @@ input.custom-text-field {
     transition: 0.3s;
     color: rgba(235, 219, 219, 0.8);
     padding: 5px 10px;
+    text-align: var(--input-text-align);
 }
 
 input.custom-text-field::placeholder {
@@ -17,4 +18,14 @@ input.custom-text-field:hover::placeholder {
 input.custom-text-field:hover,
 input.custom-text-field:focus {
     border-color: var(--input-border-color);
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
 }
