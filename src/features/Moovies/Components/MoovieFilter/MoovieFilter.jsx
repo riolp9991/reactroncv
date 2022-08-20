@@ -11,7 +11,6 @@ const MoovieFilter = ({}) => {
   const [titleVar, setTitle] = useState("");
   const [yearVar, setYear] = useState("");
   const changeTitle = useMoovieStore((state) => state.setTitle);
-  //Update the store
 
   return (
     <div className="moovie-filter">
@@ -34,6 +33,8 @@ const MoovieFilter = ({}) => {
       <div className="section">
         <FlatButton onClick={changeTitle(titleVar)} text="" icon={faSearch} />
       </div>
+      <span>{titleVar}</span>
+      <span>{yearVar}</span>
     </div>
   );
 };

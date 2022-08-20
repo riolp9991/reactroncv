@@ -13,7 +13,6 @@ const CustomText = ({
   type = "text",
 }) => {
   const changeValue = (e) => {
-    console.log(e.target.value);
     setValue(e.target.value);
   };
 

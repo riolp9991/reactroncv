@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 const MoovieList = () => {
   const [moovies, setMoovies] = useState([]);
-  const titleToSearch = useMoovieStore((state) => state.searchTitle);
+  //const titleToSearch = useMoovieStore((state) => state.searchTitle);
 
   const TextForEmpty = () =>
     moovies.length === 0 ? (
@@ -79,7 +79,6 @@ const MoovieList = () => {
           );
         })}
       </div>
-      <h1>{titleToSearch}</h1>
     </>
   );
 };
