@@ -10,6 +10,8 @@ import MooviesPaginate from "../MooviesPaginate/MoovesPaginate";
 
 import { useEffect, useState } from "react";
 
+const SinglePaginate = () => <MooviesPaginate />;
+
 const MoovieList = () => {
   const [moovies, setMoovies] = useState([]);
   const titleForFinding = useSelector((state) => state.moovies.title);
@@ -56,7 +58,7 @@ const MoovieList = () => {
     <>
       <TextForEmpty />
       <div className="moovie-list-holder">
-        <MooviesPaginate />
+        <SinglePaginate />
         <div className="moovie-list">
           {moovies.map((item) => {
             return (
@@ -69,7 +71,7 @@ const MoovieList = () => {
             );
           })}
         </div>
-        <MooviesPaginate />
+        <SinglePaginate />
       </div>
     </>
   );
