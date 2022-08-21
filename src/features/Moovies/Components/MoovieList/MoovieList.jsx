@@ -6,6 +6,7 @@ import { findMoovies } from "../../../../database/comunicators/moovies/moovies.r
 import { faCogs } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { setTitle, setYear } from "../../moovies.slice";
+import MooviesPaginate from "../MooviesPaginate/MoovesPaginate";
 
 import { useEffect, useState } from "react";
 
@@ -56,6 +57,7 @@ const MoovieList = () => {
       <TextForEmpty />
       <button onClick={SearchMoovies}>CLick me</button>
       <div className="moovie-list-holder">
+        <MooviesPaginate />
         <div className="moovie-list">
           {moovies.map((item) => {
             return (
