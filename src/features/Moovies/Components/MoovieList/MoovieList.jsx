@@ -6,17 +6,14 @@ import { findMoovies } from "../../../../database/comunicators/moovies/moovies.r
 import { faCogs } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import useMoovieStore from "../../Hooks/useMoovieStore";
+import { setTitle, setYear } from "../../moovies.slice";
 
 import { useEffect, useState, useMemo } from "react";
 
 const MoovieList = () => {
   const [moovies, setMoovies] = useState([]);
-  //const titleToSearch = useMoovieStore((state) => state.searchTitle);
-  //const titleToSearch = useMemo(
-  //useMoovieStore((state) => state.searchTitle),
-  //state
-  //);
   const titleForFinding = useSelector((state) => state.moovies.title);
+  const yearForFinding = useSelector((state) => state.moovies.year);
 
   const TextForEmpty = () =>
     moovies.length === 0 ? (
@@ -39,42 +36,34 @@ const MoovieList = () => {
       <></>
     );
 
-  const startMooviesArray = async () => {
-    const data = await await SearchMoovies();
-    setMoovies(data);
-  };
-
-  const addToMooviesArray = async (newData) => {
-    setMoovies([...moovies, ...newData]);
-  };
-
   const SearchMoovies = async () => {
-    console.log("FETCHING MOOVIES");
-    const fetchedData = await findMoovies();
-    findMoovies().then((result) => {
-      console.log("Hello");
-      console.log({ result });
-    });
-
-    return fetchedData;
+    //console.log("FETCHING MOOVIES");
+    const fetchedData = await findMoovies(titleForFinding, yearForFinding);
+    //findMoovies(titleForFinding, yearForFinding).then((result) => {
+    //console.log({ result });
+    //});
+    //console.log(fetchedData);
+    setMoovies(fetchedData);
   };
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("Hello");
-    startMooviesArray();
-  }, []);
+    dispatch(setTitle(""));
+    dispatch(setYear(""));
+  });
 
-  let testTiles = [];
-  for (let i = 0; i <= 14; i++) {
-    testTiles.push(<MoovieTile />);
-  }
+  useEffect(() => {
+    SearchMoovies();
+  }, [titleForFinding, yearForFinding]);
 
   return (
     <>
       <TextForEmpty />
+      <button onClick={SearchMoovies}>CLick me</button>
       <div className="moovie-list">
         {moovies.map((item) => {
-          console.log(item.dataValues.title);
+          //console.log(item.dataValues.title);
           return (
             <MoovieTile
               link={item.dataValues.link}
@@ -85,7 +74,6 @@ const MoovieList = () => {
           );
         })}
       </div>
-      <h1>{titleForFinding}</h1>
     </>
   );
 };

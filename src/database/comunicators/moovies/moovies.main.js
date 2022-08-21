@@ -11,10 +11,10 @@ const findTheMoovies = async (title = "", year = "") => {
         ],
         where: {
             title: {
-                [Op.like]: `${title}%`,
+                [Op.like]: `%${title}%`,
             },
             year: {
-                [Op.like]: `${year}%`,
+                [Op.like]: `%${year}%`,
             },
         },
     });
@@ -25,7 +25,8 @@ const findTheMoovies = async (title = "", year = "") => {
 ipcMain.on("moovies-communication", async (event, args) => {
     console.log({ args });
     if ((args.message = "find")) {
-        const data = await findTheMoovies();
+        console.log("SEARCHING");
+        const data = await findTheMoovies(args.title, args.year);
         event.reply("fetched-moovies", data);
     } else event.reply("no-event");
 });

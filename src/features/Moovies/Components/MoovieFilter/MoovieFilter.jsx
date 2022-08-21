@@ -6,7 +6,10 @@ import FlatButton from "../../../../components/FlatButton/FlatButton";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setTitle as setStoredTitle } from "../../moovies.slice.js";
+import {
+  setTitle as setStoredTitle,
+  setYear as setStoredYear,
+} from "../../moovies.slice.js";
 
 const MoovieFilter = ({}) => {
   //Internal variables
@@ -15,10 +18,11 @@ const MoovieFilter = ({}) => {
   const dispatch = useDispatch();
   const changeTitle = () => {
     dispatch(setStoredTitle(titleVar));
+    dispatch(setStoredYear(yearVar));
   };
 
   return (
-    <div className="moovie-filter">
+    <form onSubmit={changeTitle} className="moovie-filter">
       <div className="section">
         <CustomText
           value={titleVar}
@@ -36,11 +40,9 @@ const MoovieFilter = ({}) => {
         />
       </div>
       <div className="section">
-        <FlatButton onClick={() => changeTitle()} text="" icon={faSearch} />
+        <FlatButton text="" icon={faSearch} />
       </div>
-      <span>{titleVar}</span>
-      <span>{yearVar}</span>
-    </div>
+    </form>
   );
 };
 
