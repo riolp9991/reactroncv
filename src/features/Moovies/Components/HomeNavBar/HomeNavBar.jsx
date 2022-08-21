@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import {
   setTitle as setStoredTitle,
   setYear as setStoredYear,
+  setMooviesPage,
 } from "../../moovies.slice.js";
 
 const HomeNavBar = ({ hidden }) => {
@@ -20,9 +21,11 @@ const HomeNavBar = ({ hidden }) => {
 
   const dispatch = useDispatch();
   const resetFilter = () => {
-    console.log("RESETING FILTER");
+    //console.log("RESETING FILTER");
     dispatch(setStoredTitle(""));
     dispatch(setStoredYear(""));
+    dispatch(setMooviesPage(2));
+    dispatch(setMooviesPage(1));
   };
 
   const HiddenChild = () => {

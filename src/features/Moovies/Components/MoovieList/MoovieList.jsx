@@ -23,7 +23,10 @@ const MoovieList = () => {
   const paginationPage = useSelector((state) => state.moovies.mooviesPage);
   const paginationPages = useSelector((state) => state.moovies.mooviesPages);
 
-  const SinglePaginate = () => <MooviesPaginate />;
+  const SinglePaginate = () => {
+    if (Math.ceil(paginationPages / 32) > 1) return <MooviesPaginate />;
+    return <span style={{ marginTop: "2em", display: "block" }}></span>;
+  };
 
   const TextForEmpty = () =>
     moovies.length === 0 ? (
@@ -60,9 +63,12 @@ const MoovieList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("HOLALALALAL");
     dispatch(setMooviesPage(1));
+    dispatch(setMooviesPages(0));
     dispatch(setTitle(""));
     dispatch(setYear(""));
+    //SearchMoovies();
   }, []);
 
   useEffect(() => {
