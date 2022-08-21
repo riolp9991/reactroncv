@@ -67,7 +67,7 @@ const MoovieList = () => {
 
   useEffect(() => {
     SearchMoovies();
-  }, [titleForFinding, yearForFinding, paginationPage]);
+  }, [titleForFinding, yearForFinding, paginationPage, paginationPages]);
 
   return (
     <>

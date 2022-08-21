@@ -21,7 +21,16 @@ const findTheMoovies = async (title = "", year = "", limit = 0, offset = 0) => {
         offset: offset,
     });
 
-    const count = await Moovie.count();
+    const count = await Moovie.count({
+        where: {
+            title: {
+                [Op.like]: `%${title}%`,
+            },
+            year: {
+                [Op.like]: `%${year}%`,
+            },
+        },
+    });
 
     return { data, count };
 };

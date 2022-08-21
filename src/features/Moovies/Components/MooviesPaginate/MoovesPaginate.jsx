@@ -80,8 +80,8 @@ const GenerateTiles = ({ pages = 2, page = 1 }) => {
 
 const MoovesPaginate = (props) => {
   const maxSize = useSelector((state) => state.moovies.mooviesPages);
-  const step = 32;
   const page = useSelector((state) => state.moovies.mooviesPage);
+  const step = 32;
   const pages = Math.ceil(maxSize / step);
 
   return (
