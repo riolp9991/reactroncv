@@ -1,7 +1,6 @@
 import "./MoovieFilter.css";
 import CustomText from "../../../../components/CustomText/CustomText";
 import FlatButton from "../../../../components/FlatButton/FlatButton";
-//import useMoovieStore from "../../Hooks/useMoovieStore";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
@@ -11,18 +10,18 @@ import {
   setYear as setStoredYear,
 } from "../../moovies.slice.js";
 
-const MoovieFilter = ({}) => {
+const MoovieFilter = () => {
   //Internal variables
   const [titleVar, setTitle] = useState("");
   const [yearVar, setYear] = useState("");
   const dispatch = useDispatch();
-  const changeTitle = () => {
+  const changeFilter = () => {
     dispatch(setStoredTitle(titleVar));
     dispatch(setStoredYear(yearVar));
   };
 
   return (
-    <form onSubmit={changeTitle} className="moovie-filter">
+    <form onSubmit={changeFilter} className="moovie-filter">
       <div className="section">
         <CustomText
           value={titleVar}

@@ -8,10 +8,22 @@ import {
   faRedo,
   faMinus,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import {
+  setTitle as setStoredTitle,
+  setYear as setStoredYear,
+} from "../../moovies.slice.js";
 
 const HomeNavBar = ({ hidden }) => {
   let [showHidden, setHidden] = useState(false);
   const hiddenElement = <div className="hidden">{hidden}</div>;
+
+  const dispatch = useDispatch();
+  const resetFilter = () => {
+    console.log("RESETING FILTER");
+    dispatch(setStoredTitle(""));
+    dispatch(setStoredYear(""));
+  };
 
   const HiddenChild = () => {
     if (showHidden) return hiddenElement;
@@ -45,6 +57,7 @@ const HomeNavBar = ({ hidden }) => {
             fontSize="0.9em"
             text=""
             icon={faRedo}
+            onClick={resetFilter}
           />
           <FlatButton
             borderColor="var(--purple-accent)"
