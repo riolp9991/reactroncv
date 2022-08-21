@@ -1,16 +1,21 @@
 import "./MoovieFilter.css";
 import CustomText from "../../../../components/CustomText/CustomText";
 import FlatButton from "../../../../components/FlatButton/FlatButton";
-import useMoovieStore from "../../Hooks/useMoovieStore";
+//import useMoovieStore from "../../Hooks/useMoovieStore";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setTitle as setStoredTitle } from "../../moovies.slice.js";
 
 const MoovieFilter = ({}) => {
   //Internal variables
   const [titleVar, setTitle] = useState("");
   const [yearVar, setYear] = useState("");
-  const changeTitle = useMoovieStore((state) => state.setTitle);
+  const dispatch = useDispatch();
+  const changeTitle = () => {
+    dispatch(setStoredTitle(titleVar));
+  };
 
   return (
     <div className="moovie-filter">
@@ -31,7 +36,7 @@ const MoovieFilter = ({}) => {
         />
       </div>
       <div className="section">
-        <FlatButton onClick={changeTitle(titleVar)} text="" icon={faSearch} />
+        <FlatButton onClick={() => changeTitle()} text="" icon={faSearch} />
       </div>
       <span>{titleVar}</span>
       <span>{yearVar}</span>
