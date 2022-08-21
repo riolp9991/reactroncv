@@ -50,7 +50,6 @@ const MoovieList = () => {
     setCount(fetchedData.count);
     dispatch(setMooviesPage(1));
     dispatch(setMooviesPages(fetchedData.count));
-    console.log({ fetchedData });
   };
 
   const dispatch = useDispatch();

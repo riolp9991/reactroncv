@@ -2,7 +2,7 @@ const { ipcMain } = require("electron");
 const { Moovie } = require("../../models/moovies");
 const { Op } = require("sequelize");
 
-const findTheMoovies = async (title = "", year = "") => {
+const findTheMoovies = async (title = "", year = "", limit = 0, offset = 0) => {
     console.log("Fetching Moovies");
     const data = await Moovie.findAll({
         order: [
@@ -17,6 +17,8 @@ const findTheMoovies = async (title = "", year = "") => {
                 [Op.like]: `%${year}%`,
             },
         },
+        limit: limit,
+        offset: offset,
     });
 
     const count = await Moovie.count();
@@ -28,7 +30,12 @@ ipcMain.on("moovies-communication", async (event, args) => {
     console.log({ args });
     if ((args.message = "find")) {
         console.log("SEARCHING");
-        const data = await findTheMoovies(args.title, args.year);
+        const data = await findTheMoovies(
+            args.title,
+            args.year,
+            args.limit,
+            args.offset
+        );
         event.reply("fetched-moovies", data);
     } else event.reply("no-event");
 });
