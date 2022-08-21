@@ -55,7 +55,6 @@ const MoovieList = () => {
   return (
     <>
       <TextForEmpty />
-      <button onClick={SearchMoovies}>CLick me</button>
       <div className="moovie-list-holder">
         <MooviesPaginate />
         <div className="moovie-list">
@@ -70,6 +69,7 @@ const MoovieList = () => {
             );
           })}
         </div>
+        <MooviesPaginate />
       </div>
     </>
   );
