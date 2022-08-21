@@ -7,7 +7,7 @@ import { faCogs } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { setTitle, setYear } from "../../moovies.slice";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 const MoovieList = () => {
   const [moovies, setMoovies] = useState([]);
