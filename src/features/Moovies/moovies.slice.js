@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     title: "",
     year: "",
+    mooviesPages: 0,
+    mooviesPage: 0,
 };
 
 export const moovieSlice = createSlice({
@@ -15,8 +17,15 @@ export const moovieSlice = createSlice({
         setYear: (state, action) => {
             state.year = action.payload;
         },
+        setMooviesPage: (state, action) => {
+            state.mooviesPage = action.payload;
+        },
+        setMooviesPages: (state, action) => {
+            state.mooviesPages = action.payload;
+        },
     },
 });
 
-export const { setTitle, setYear } = moovieSlice.actions;
+export const { setTitle, setYear, setMooviesPages, setMooviesPage } =
+    moovieSlice.actions;
 export default moovieSlice.reducer;

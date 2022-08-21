@@ -5,17 +5,23 @@ import FlatLink from "../../../../components/FlatButton/FlatLink";
 import { findMoovies } from "../../../../database/comunicators/moovies/moovies.render";
 import { faCogs } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
-import { setTitle, setYear } from "../../moovies.slice";
+import {
+  setTitle,
+  setYear,
+  setMooviesPages,
+  setMooviesPage,
+} from "../../moovies.slice";
 import MooviesPaginate from "../MooviesPaginate/MoovesPaginate";
 
 import { useEffect, useState } from "react";
 
-const SinglePaginate = () => <MooviesPaginate />;
-
 const MoovieList = () => {
   const [moovies, setMoovies] = useState([]);
+  const [count, setCount] = useState(0);
   const titleForFinding = useSelector((state) => state.moovies.title);
   const yearForFinding = useSelector((state) => state.moovies.year);
+
+  const SinglePaginate = () => <MooviesPaginate />;
 
   const TextForEmpty = () =>
     moovies.length === 0 ? (
@@ -40,7 +46,11 @@ const MoovieList = () => {
 
   const SearchMoovies = async () => {
     const fetchedData = await findMoovies(titleForFinding, yearForFinding);
-    setMoovies(fetchedData);
+    setMoovies(fetchedData.data);
+    setCount(fetchedData.count);
+    dispatch(setMooviesPage(1));
+    dispatch(setMooviesPages(fetchedData.count));
+    console.log({ fetchedData });
   };
 
   const dispatch = useDispatch();

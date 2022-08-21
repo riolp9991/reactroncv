@@ -19,7 +19,9 @@ const findTheMoovies = async (title = "", year = "") => {
         },
     });
 
-    return data;
+    const count = await Moovie.count();
+
+    return { data, count };
 };
 
 ipcMain.on("moovies-communication", async (event, args) => {
