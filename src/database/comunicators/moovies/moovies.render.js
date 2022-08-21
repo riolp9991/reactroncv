@@ -1,7 +1,8 @@
 const electron = window.require("electron");
 const { ipcRenderer } = electron;
 
-export const findMoovies = (title = "", year = "", limit = 32, page = 1) => {
+export const findMoovies = (title = "", year = "", page = 1) => {
+    const limit = 32;
     return new Promise((resolve) => {
         ipcRenderer.once("fetched-moovies", (_, args) => {
             resolve(args);

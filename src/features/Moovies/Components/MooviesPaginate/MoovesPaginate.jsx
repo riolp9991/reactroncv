@@ -1,16 +1,26 @@
 import "./MooviesPaginate.css";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setMooviesPage } from "../../moovies.slice";
+
 const PaginateTile = ({ text, active = false }) => {
+  const dispatch = useDispatch();
+
   const activeClass = active ? "active" : "";
-  return <span className={`moovies-paginate-tile ${activeClass}`}>{text}</span>;
+  return (
+    <span
+      onClick={() => dispatch(setMooviesPage(text))}
+      className={`moovies-paginate-tile ${activeClass}`}
+    >
+      {text}
+    </span>
+  );
 };
 
 const GenerateTiles = ({ pages = 2, page = 1 }) => {
   let firstText = 1;
   let secondText = 2;
   let thirdText = 3;
-
-  console.log({ page });
 
   if (pages > 2) {
     if (page === 1) {
@@ -69,18 +79,18 @@ const GenerateTiles = ({ pages = 2, page = 1 }) => {
 };
 
 const MoovesPaginate = (props) => {
-  const maxSize = 80;
-  const step = 20;
-  const page = 2;
+  const maxSize = useSelector((state) => state.moovies.mooviesPages);
+  const step = 32;
+  const page = useSelector((state) => state.moovies.mooviesPage);
   const pages = Math.ceil(maxSize / step);
 
   return (
     <div className="moovies-paginate">
-      <PaginateTile text={1} />
+      {pages > 3 ? <PaginateTile text={1} /> : <></>}
       <span className="paginate-separator">|</span>
       <GenerateTiles pages={pages} page={page} />
       <span className="paginate-separator">|</span>
-      <PaginateTile text={pages} />
+      {pages > 3 ? <PaginateTile text={pages} /> : <></>}
     </div>
   );
 };

@@ -20,6 +20,8 @@ const MoovieList = () => {
   const [count, setCount] = useState(0);
   const titleForFinding = useSelector((state) => state.moovies.title);
   const yearForFinding = useSelector((state) => state.moovies.year);
+  const paginationPage = useSelector((state) => state.moovies.mooviesPage);
+  const paginationPages = useSelector((state) => state.moovies.mooviesPages);
 
   const SinglePaginate = () => <MooviesPaginate />;
 
@@ -45,23 +47,27 @@ const MoovieList = () => {
     );
 
   const SearchMoovies = async () => {
-    const fetchedData = await findMoovies(titleForFinding, yearForFinding);
+    const fetchedData = await findMoovies(
+      titleForFinding,
+      yearForFinding,
+      paginationPage
+    );
     setMoovies(fetchedData.data);
     setCount(fetchedData.count);
-    dispatch(setMooviesPage(1));
     dispatch(setMooviesPages(fetchedData.count));
   };
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setMooviesPage(1));
     dispatch(setTitle(""));
     dispatch(setYear(""));
   }, []);
 
   useEffect(() => {
     SearchMoovies();
-  }, [titleForFinding, yearForFinding]);
+  }, [titleForFinding, yearForFinding, paginationPage]);
 
   return (
     <>
