@@ -22,3 +22,7 @@
   background-color: var(--solid-bg);
   color: var(--purple-text);
 }
+
+.paginate-separator {
+  color: rgba(255, 255, 255, 0.1);
+}
