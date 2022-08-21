@@ -6,45 +6,72 @@ const PaginateTile = ({ text, active = false }) => {
 };
 
 const GenerateTiles = ({ pages = 2, page = 1 }) => {
-  let firstText = "";
-  let secondText = "";
-  let thirdText = "";
+  let firstText = 1;
+  let secondText = 2;
+  let thirdText = 3;
 
   console.log({ page });
 
-  if (page === 1) {
-    firstText = 1;
-    secondText = 2;
-    thirdText = 3;
+  if (pages > 2) {
+    if (page === 1) {
+      firstText = 1;
+      secondText = 2;
+      thirdText = 3;
+    }
+
+    if (page > 1 && page < pages) {
+      firstText = page - 1;
+      secondText = page;
+      thirdText = page + 1;
+    }
+
+    if (page === pages) {
+      firstText = page - 2;
+      secondText = page - 1;
+      thirdText = page;
+    }
   }
 
-  if (page > 1 && page < pages) {
-    firstText = page - 1;
-    secondText = page;
-    thirdText = page + 1;
-  }
-
-  if (page === pages) {
-    firstText = page - 2;
-    secondText = page - 1;
-    thirdText = page;
-  }
+  const First = () => (
+    <PaginateTile active={page === firstText ? true : false} text={firstText} />
+  );
+  const Second = () => (
+    <PaginateTile
+      active={page === secondText ? true : false}
+      text={secondText}
+    />
+  );
+  const Third = () => (
+    <PaginateTile active={page === thirdText ? true : false} text={thirdText} />
+  );
 
   const ListHigherThan3 = (
     <>
-      <PaginateTile text={firstText} />
-      <PaginateTile text={secondText} />
-      <PaginateTile text={thirdText} />
+      <First />
+      <Second />
+      <Third />
+    </>
+  );
+  const ListTwo = (
+    <>
+      <First />
+      <Second />
     </>
   );
 
-  return ListHigherThan3;
+  const getReturn = () => {
+    if (pages >= 3) return ListHigherThan3;
+    if (pages == 2) return ListTwo;
+    if (pages < 2) return <First />;
+  };
+
+  return getReturn();
 };
 
 const MoovesPaginate = (props) => {
-  const maxSize = 240;
+  const maxSize = 80;
   const step = 20;
-  const page = 12;
+  const page = 2;
   const pages = Math.ceil(maxSize / step);
 
   return (
