@@ -68,7 +68,7 @@ const MoovieList = () => {
     dispatch(setMooviesPages(0));
     dispatch(setTitle(""));
     dispatch(setYear(""));
-    //SearchMoovies();
+    SearchMoovies();
   }, []);
 
   useEffect(() => {
