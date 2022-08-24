@@ -20,7 +20,7 @@ const extractLinks = async (url = URL) => {
         // this is a mass object, not an array
 
         // Collect the "href" and "title" of each link and add them to an array
-        var ScrappedLinks = [];
+        let ScrappedLinks = [];
 
         linkObjects.each((index, element) => {
             let text = $(element).text().substring(5);
@@ -55,6 +55,7 @@ const seedMoovies = async () => {
         const moovie = await Moovie.findOrCreate({
             where: {
                 title: item.title,
+                year: item.year,
             },
             defaults: {
                 ...item,
