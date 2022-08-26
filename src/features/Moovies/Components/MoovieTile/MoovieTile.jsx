@@ -9,11 +9,11 @@ const MoovieTile = ({
   link,
   text = "Nombre de la pelicula",
   year = new Date().getFullYear(),
-  to = "/",
+  to = "",
 }) => {
   const navigate = useNavigate();
   const redirect = () => {
-    navigate(to);
+    navigate(`/moovies/${to}`);
   };
 
   const openWebClick = (e) => {

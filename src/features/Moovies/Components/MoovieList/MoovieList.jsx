@@ -88,6 +88,7 @@ const MoovieList = () => {
                 year={item.dataValues.year}
                 key={item.dataValues.id}
                 text={item.dataValues.title}
+                to={item.dataValues.id}
               />
             );
           })}
