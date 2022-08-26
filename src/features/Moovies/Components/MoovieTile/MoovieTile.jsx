@@ -18,8 +18,13 @@ const MoovieTile = ({
 
   const openWebClick = (e) => {
     e.stopPropagation();
-    console.log(`Clicked ${text} eye Icon`);
     openLink(link);
+  };
+
+  const copyToClipboard = (e) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(link);
+    alert("Enlace copiado al portapapeles");
   };
 
   return (
@@ -28,7 +33,7 @@ const MoovieTile = ({
       <span className="float-tile web" onClick={openWebClick}>
         <FontAwesomeIcon icon={faEye} />
       </span>
-      <span className="float-tile clip" onClick={openWebClick}>
+      <span className="float-tile clip" onClick={copyToClipboard}>
         <FontAwesomeIcon icon={faClipboard} />
       </span>
       <h1>{text}</h1>
