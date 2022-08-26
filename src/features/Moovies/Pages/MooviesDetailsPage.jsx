@@ -1,8 +1,13 @@
 import "./MoovieDetails.css";
 import { FlatLink } from "../../../components/FlatButton";
+import MoovieDetailNav from "../Components/MoovieDetailNav/MoovieDetailNav";
 
 const MooviesDetailsPage = (props) => {
-  return <FlatLink text="Regresar" to="/moovies" />;
+  return (
+    <>
+      <MoovieDetailNav />
+    </>
+  );
 };
 
 export default MooviesDetailsPage;

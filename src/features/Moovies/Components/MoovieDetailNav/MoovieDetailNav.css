@@ -1,0 +1,25 @@
+.moovie-details-header {
+    width: 100%;
+    background: var(--solid-bg);
+}
+
+.moovie-details-header nav {
+    widows: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.moovie-details-nav-sections {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moovie-details-header h1 {
+    color: rgba(255, 255, 255, 0.6);
+    color: var(--accent-text);
+    font-size: 1.2rem;
+    margin: 0;
+    /*text-transform: uppercase;*/
+}
