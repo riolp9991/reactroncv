@@ -4,6 +4,8 @@ import { openLink } from "../../../../lib/communicators/links/links.render.js";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faClipboard } from "@fortawesome/free-solid-svg-icons";
+import { setCurrentMoovieId } from "../../moovies.slice.js";
+import { useDispatch } from "react-redux";
 
 const MoovieTile = ({
   link,
@@ -11,6 +13,8 @@ const MoovieTile = ({
   year = new Date().getFullYear(),
   to = "",
 }) => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const redirect = () => {
     navigate(`/moovies/${to}`);
@@ -18,6 +22,7 @@ const MoovieTile = ({
 
   const openWebClick = (e) => {
     e.stopPropagation();
+    dispatch(setCurrentMoovieId(to));
     openLink(link);
   };
 
