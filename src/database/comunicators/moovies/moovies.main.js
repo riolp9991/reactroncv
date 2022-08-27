@@ -22,9 +22,6 @@ const findTheMoovies = async (
             year: {
                 [Op.like]: `%${year}%`,
             },
-            link: {
-                [Op.like]: `%${link}%`,
-            },
         },
         limit: limit,
         offset: offset,
@@ -51,7 +48,6 @@ ipcMain.on("moovies-communication", async (event, args) => {
         const data = await findTheMoovies(
             args.title,
             args.year,
-            args.link,
             args.limit,
             args.offset
         );
