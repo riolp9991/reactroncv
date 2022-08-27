@@ -38,8 +38,3 @@ export const {
     setCurrentMoovieId,
 } = moovieSlice.actions;
 export default moovieSlice.reducer;
-  setMooviesPages,
-  setMooviesPage,
-  setCurrentMoovieId,
-} = moovieSlice.actions;
-export default moovieSlice.reducer;
