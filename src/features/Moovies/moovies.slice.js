@@ -5,6 +5,7 @@ const initialState = {
     year: "",
     mooviesPages: 0,
     mooviesPage: 0,
+    currentMoovieID: -1,
 };
 
 export const moovieSlice = createSlice({
@@ -23,9 +24,22 @@ export const moovieSlice = createSlice({
         setMooviesPages: (state, action) => {
             state.mooviesPages = action.payload;
         },
+        setCurrentMoovieId: (state, action) => {
+            state.currentMoovieID = action.payload;
+        },
     },
 });
 
-export const { setTitle, setYear, setMooviesPages, setMooviesPage } =
-    moovieSlice.actions;
+export const {
+    setTitle,
+    setYear,
+    setMooviesPages,
+    setMooviesPage,
+    setCurrentMoovieId,
+} = moovieSlice.actions;
+export default moovieSlice.reducer;
+  setMooviesPages,
+  setMooviesPage,
+  setCurrentMoovieId,
+} = moovieSlice.actions;
 export default moovieSlice.reducer;
