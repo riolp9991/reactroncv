@@ -55,6 +55,7 @@ const MoovieList = () => {
       yearForFinding,
       paginationPage
     );
+    console.log(fetchedData);
     setMoovies(fetchedData.data);
     setCount(fetchedData.count);
     dispatch(setMooviesPages(fetchedData.count));

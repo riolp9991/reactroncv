@@ -6,6 +6,7 @@ export const findMoovies = (title = "", year = "", page = 1) => {
     return new Promise((resolve) => {
         ipcRenderer.once("fetched-moovies", (_, args) => {
             resolve(args);
+            console.log(args);
         });
         ipcRenderer.send("moovies-communication", {
             message: "find",
@@ -19,7 +20,7 @@ export const findMoovies = (title = "", year = "", page = 1) => {
 
 export const findById = (id = 1) => {
     return new Promise((resolve) => {
-        ipcRenderer.one("fetched-moovie", (_, args) => {
+        ipcRenderer.once("fetched-moovie", (_, args) => {
             resolve(args);
         });
 
