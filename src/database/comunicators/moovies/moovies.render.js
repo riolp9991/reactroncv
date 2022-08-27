@@ -16,3 +16,16 @@ export const findMoovies = (title = "", year = "", page = 1) => {
         });
     });
 };
+
+export const findById = (id = 1) => {
+    return new Promise((resolve) => {
+        ipcRenderer.one("fetched-moovie", (_, args) => {
+            resolve(args);
+        });
+
+        ipcRenderer.send("moovies-communication", {
+            message: "findOne",
+            id: id,
+        });
+    });
+};
