@@ -43,7 +43,7 @@ const findTheMoovies = async (
 
 ipcMain.on("moovies-communication", async (event, args) => {
     console.log({ args });
-    if ((args.message = "find")) {
+    if (args.message === "find") {
         console.log("SEARCHING");
         const data = await findTheMoovies(
             args.title,
@@ -53,4 +53,9 @@ ipcMain.on("moovies-communication", async (event, args) => {
         );
         event.reply("fetched-moovies", data);
     } else event.reply("no-event");
+    if (args.message === "findOne") {
+        console.log("SEARCHING BY ID");
+        const data = await Moovie.findByPk(args.id);
+        event.reply("fetched-moovie", data);
+    }
 });
