@@ -1,10 +1,10 @@
 import "./DetailsImages.css";
 
-const DetailsImages = (props) => {
+const DetailsImages = ({ images = [] }) => {
   return (
     <div className="moovie-details-image-container">
       <div className="main-image">
-        <img src="" alt="" />
+        <img src={images[0].link} alt="" />
       </div>
       <div className="images-list">
         <div className="img-container">
