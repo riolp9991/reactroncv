@@ -1,21 +1,22 @@
 import "./DetailsImages.css";
+import { useState } from "react";
 
 const DetailsImages = ({ images = [] }) => {
+  const [viewIndex, setIndex] = useState(0);
+
   return (
     <div className="moovie-details-image-container">
       <div className="main-image">
-        <img src={images[0].link} alt="" />
+        <img src={images[viewIndex].link} alt="" />
       </div>
       <div className="images-list">
-        <div className="img-container">
-          <img src="" alt="" />
-        </div>
-        <div className="img-container">
-          <img src="" alt="" />
-        </div>
-        <div className="img-container">
-          <img src="" alt="" />
-        </div>
+        {images.map((value, index) => {
+          return (
+            <div onClick={() => setIndex(index)} className="img-container">
+              <img src={value.link} alt={value.fixedText} srcset="" />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
