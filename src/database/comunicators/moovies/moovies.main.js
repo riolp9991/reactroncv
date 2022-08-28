@@ -72,8 +72,42 @@ const getMoovieOnlineData = async (moovieLink = "") => {
 
     const $ = cheerio.load(html);
     const linkObjects = $("a");
-    console.table(linkObjects);
+    //console.log(linkObjects);
 
     const SCRAPPED_LINKS = [];
+    //linkObjects.splice();
+
+    //linkObjects = linkObjects.splice(4);
+    //console.log({ linkObjects });
+
+    linkObjects.splice(5).forEach((element, index) => {
+        let text = $(element).text();
+
+        const textSlices = text.split(".");
+        let fixedText = "";
+
+        for (let i = 0; i < textSlices.length - 1; i++) {
+            const spaceAtEnd = i === textSlices.length - 2 ? "" : " ";
+            fixedText += textSlices[i] + spaceAtEnd;
+        }
+        fixedText.trimEnd();
+        fixedText += `.${textSlices[textSlices.length - 1]}`;
+        //while (text.includes(".")) {
+        //text = text.replace(".", " ");
+        //}
+        //text = text.replace("/", "");
+        //text = text.trim();
+
+        SCRAPPED_LINKS.push({
+            text: text, // get the text
+            fixedText,
+            //year: $(element).text().substring(0, 4),
+            //href: $(element).attr("href"), // get the href attribute
+            link: `${moovieLink}${$(element).attr("href")}`,
+        });
+    });
+
+    console.table(SCRAPPED_LINKS);
+
     return SCRAPPED_LINKS;
 };
