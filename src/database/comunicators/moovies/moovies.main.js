@@ -54,4 +54,25 @@ ipcMain.on("moovies-communication", async (event, args) => {
         const data = await Moovie.findByPk(args.id);
         event.reply("fetched-moovie", data);
     }
+    if (args.message === "fetchMoovieData") {
+        console.log("Searching moovie online data");
+        const data = await getMoovieOnlineData(args.link);
+        event.reply("scrapped-data", data);
+    }
 });
+
+const cheerio = require("cheerio");
+const axios = require("axios");
+
+const getMoovieOnlineData = async (moovieLink = "") => {
+    console.log(`FETCHING MOOVIE LINK: ${moovieLink}`);
+    const response = await axios.get(url);
+    const html = response.data;
+
+    const $ = cheerio.load(html);
+    const linkObjects = $("a");
+    console.table(linkObjects);
+
+    const SCRAPPED_LINKS = [];
+    return SCRAPPED_LINKS;
+};
