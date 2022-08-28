@@ -64,6 +64,7 @@ ipcMain.on("moovies-communication", async (event, args) => {
 
 const cheerio = require("cheerio");
 const axios = require("axios");
+const xml2js = require("xml2js");
 
 const getMoovieOnlineData = async (moovieLink = "") => {
     console.log(`FETCHING MOOVIE LINK: ${moovieLink}`);
@@ -72,13 +73,8 @@ const getMoovieOnlineData = async (moovieLink = "") => {
 
     const $ = cheerio.load(html);
     const linkObjects = $("a");
-    //console.log(linkObjects);
 
     const SCRAPPED_LINKS = [];
-    //linkObjects.splice();
-
-    //linkObjects = linkObjects.splice(4);
-    //console.log({ linkObjects });
 
     linkObjects.splice(5).forEach((element, index) => {
         let text = $(element).text();
@@ -92,22 +88,35 @@ const getMoovieOnlineData = async (moovieLink = "") => {
         }
         fixedText.trimEnd();
         fixedText += `.${textSlices[textSlices.length - 1]}`;
-        //while (text.includes(".")) {
-        //text = text.replace(".", " ");
-        //}
-        //text = text.replace("/", "");
-        //text = text.trim();
 
         SCRAPPED_LINKS.push({
             text: text, // get the text
             fixedText,
-            //year: $(element).text().substring(0, 4),
-            //href: $(element).attr("href"), // get the href attribute
             link: `${moovieLink}${$(element).attr("href")}`,
         });
     });
 
     console.table(SCRAPPED_LINKS);
 
-    return SCRAPPED_LINKS;
+    const nfoMatch = SCRAPPED_LINKS.find((element) => {
+        if (element.fixedText.includes(".nfo")) {
+            return element;
+        }
+    });
+
+    let fetchedNfo;
+    let parsedNfo;
+
+    if (nfoMatch !== undefined) {
+        const data = await axios.get(nfoMatch.link);
+        fetchedNfo = data.data;
+    }
+
+    xml2js.parseString(fetchedNfo, (err, result) => {
+        parsedNfo = result;
+    });
+
+    //console.log({ nfoMatch, parsedNfo });
+
+    return { links: SCRAPPED_LINKS, info: parsedNfo };
 };
