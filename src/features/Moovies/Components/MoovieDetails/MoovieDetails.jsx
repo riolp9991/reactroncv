@@ -2,6 +2,7 @@ import "./MoovieDetails.css";
 
 import { scrapMoovieData } from "../../../../database/comunicators/moovies/moovies.render";
 import { useEffect } from "react";
+import DetailsImages from "../DetailsImages/DetailsImages";
 
 const MoovieDetails = ({ link = "" }) => {
   const scrapDatta = async () => {
@@ -17,6 +18,12 @@ const MoovieDetails = ({ link = "" }) => {
   return (
     <div className="moovie-details-container">
       <h1>Hola mundo</h1>
+      <div className="details">
+        <div className="section">
+          <DetailsImages />
+        </div>
+        <div className="section"></div>
+      </div>
     </div>
   );
 };

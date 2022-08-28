@@ -1,0 +1,43 @@
+.moovie-details-image-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  min-width: 400px;
+}
+
+.moovie-details-image-container .main-image {
+  min-width: 200px;
+  min-height: 200px;
+  background: var(--solid-bg);
+  max-height: 300px;
+  max-width: 300px;
+}
+
+.moovie-details-image-container .images-list {
+  overflow: auto;
+  min-height: 3rem;
+  white-space: nowrap;
+  width: 300px;
+  margin-top: 8px;
+}
+
+.moovie-details-image-container .images-list .img-container {
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  margin: 4px 5px;
+  padding: 2px;
+  background: var(--solid-bg);
+  cursor: pointer;
+}
+
+.moovie-details-image-container .images-list .img-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--purple-accent);
+  border: none;
+}
