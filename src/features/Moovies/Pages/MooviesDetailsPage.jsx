@@ -35,7 +35,7 @@ const MooviesDetailsPage = (props) => {
         link={moovieLink}
         year={moovieYear}
       />
-      <MoovieDetails />
+      <MoovieDetails link={moovieLink} />
     </>
   );
 };

@@ -56,6 +56,7 @@ ipcMain.on("moovies-communication", async (event, args) => {
     }
     if (args.message === "fetchMoovieData") {
         console.log("Searching moovie online data");
+        console.log({ args });
         const data = await getMoovieOnlineData(args.link);
         event.reply("scrapped-data", data);
     }
@@ -66,7 +67,7 @@ const axios = require("axios");
 
 const getMoovieOnlineData = async (moovieLink = "") => {
     console.log(`FETCHING MOOVIE LINK: ${moovieLink}`);
-    const response = await axios.get(url);
+    const response = await axios.get(moovieLink);
     const html = response.data;
 
     const $ = cheerio.load(html);

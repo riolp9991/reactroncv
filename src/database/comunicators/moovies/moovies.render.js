@@ -30,3 +30,16 @@ export const findById = (id = 1) => {
         });
     });
 };
+
+export const scrapMoovieData = (link = "") => {
+    return new Promise((resolve) => {
+        ipcRenderer.once("scrapped-data", (_, args) => {
+            resolve(args);
+        });
+
+        ipcRenderer.send("moovies-communication", {
+            message: "fetchMoovieData",
+            link: link,
+        });
+    });
+};
