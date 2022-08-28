@@ -1,6 +1,7 @@
 import "./MoovieDetails.css";
 import { FlatLink } from "../../../components/FlatButton";
 import MoovieDetailNav from "../Components/MoovieDetailNav/MoovieDetailNav";
+import MoovieDetails from "../Components/MoovieDetails/MoovieDetails";
 import { useEffect, useState } from "react";
 import { findById } from "../../../database/comunicators/moovies/moovies.render";
 import { useSelector } from "react-redux";
@@ -10,6 +11,7 @@ const MooviesDetailsPage = (props) => {
   const moovieId = useSelector((state) => state.moovies.currentMoovieID);
   const [moovieTitle, setMoovieTitle] = useState("");
   const [moovieLink, setMoovieLink] = useState("");
+  const [moovieYear, setMoovieYear] = useState("");
   const params = useParams();
   const paramsId = params.id;
 
@@ -19,6 +21,7 @@ const MooviesDetailsPage = (props) => {
     console.log({ data });
     setMoovieTitle(data.dataValues.title);
     setMoovieLink(data.dataValues.link);
+    setMoovieYear(data.dataValues.year);
   };
 
   useEffect(() => {
@@ -27,7 +30,12 @@ const MooviesDetailsPage = (props) => {
 
   return (
     <>
-      <MoovieDetailNav title={moovieTitle} link={moovieLink} />
+      <MoovieDetailNav
+        title={moovieTitle}
+        link={moovieLink}
+        year={moovieYear}
+      />
+      <MoovieDetails />
     </>
   );
 };

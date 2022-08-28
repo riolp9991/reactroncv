@@ -6,7 +6,7 @@ import {
   faClipboard,
 } from "@fortawesome/free-solid-svg-icons";
 
-const MoovieDetailNav = ({ title = "", link = "" }) => {
+const MoovieDetailNav = ({ title = "", link = "", year = "" }) => {
   return (
     <header className="moovie-details-header">
       <nav className="moovie-details-nav">
@@ -18,6 +18,7 @@ const MoovieDetailNav = ({ title = "", link = "" }) => {
             reverseIcon={true}
           />
           <h1>{title}</h1>
+          <span className="year">{year}</span>
         </div>
         <div className="moovie-details-nav-sections">
           <FlatButton text="" icon={faEye} />
