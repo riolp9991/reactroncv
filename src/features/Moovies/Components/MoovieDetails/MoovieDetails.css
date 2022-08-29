@@ -1,30 +1,32 @@
 .moovie-details-container {
-  min-height: 100vh;
-  padding: 2em;
-  background: #383d46;
-  text-align: center;
+    min-height: 100vh;
+    padding: 2em;
+    background: #383d46;
+    text-align: center;
+    /*margin-top: 30px;*/
+    padding-top: 70px;
 }
 
 .moovie-details-container div.details {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .moovie-details-container .section:nth-child(2) {
-  height: 100px;
-  flex: 1;
-  text-align: left;
+    height: 100px;
+    flex: 1;
+    text-align: left;
 }
 
 .moovie-details-container .sinopsis h1 {
-  font-size: 1.4em;
-  color: var(--accent-text);
-  margin: 0;
-  margin-bottom: 10px;
+    font-size: 1.4em;
+    color: var(--accent-text);
+    margin: 0;
+    margin-bottom: 10px;
 }
 
 .moovie-details-container .sinopsis p {
-  color: rgba(255, 255, 255);
+    color: rgba(255, 255, 255);
 }

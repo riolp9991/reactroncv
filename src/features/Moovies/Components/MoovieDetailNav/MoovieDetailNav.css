@@ -1,6 +1,9 @@
 .moovie-details-header {
     width: 100%;
     background: var(--solid-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .moovie-details-header nav {
