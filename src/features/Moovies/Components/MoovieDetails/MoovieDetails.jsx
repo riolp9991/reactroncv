@@ -1,18 +1,21 @@
 import "./MoovieDetails.css";
 
 import { scrapMoovieData } from "../../../../database/comunicators/moovies/moovies.render";
+import MoovieDetailsInfo from "./MoovieDetailsInfo/MoovieDetailsInfo";
 import { useEffect, useState } from "react";
 import DetailsImages from "../DetailsImages/DetailsImages";
 
 const MoovieDetails = ({ link = "" }) => {
   const [data, setData] = useState({});
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const scrapDatta = async () => {
     console.log("SCRAP DATA");
     const fetchedData = await scrapMoovieData(link);
     console.log({ data: fetchedData });
     setData(fetchedData);
+    setLoading(false);
   };
 
   console.log(images);
@@ -38,20 +41,32 @@ const MoovieDetails = ({ link = "" }) => {
   const showImages =
     images.length > 0 ? <DetailsImages images={images} /> : <></>;
 
+  const moovieDetails = data?.info?.movie ? (
+    <MoovieDetailsInfo moovieData={data.info.movie} />
+  ) : !loading ? (
+    <h1 className="darkened-text">
+      No se ha encontrado un archivo .nfo en el directorio para mostrar los
+      datos de la pelicula
+    </h1>
+  ) : (
+    <></>
+  );
+
+  const loadingText = loading ? (
+    <h1 className="movie-details-loading">
+      Cargando, por favor espere un momento
+    </h1>
+  ) : (
+    <></>
+  );
+
   return (
     <div className="moovie-details-container">
+      {loadingText}
       <div className="details">
         <div className="section">{showImages}</div>
         <div className="section">
-          <div className="sinopsis">
-            <h1>Sinopsis:</h1>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Eligendi, numquam! Possimus corporis quidem deleniti? Asperiores
-              sit deserunt modi tenetur delectus, corrupti omnis, eveniet
-              corporis facilis perspiciatis natus est officiis nesciunt.
-            </p>
-          </div>
+          <div className="info">{moovieDetails}</div>
         </div>
       </div>
     </div>

@@ -7,6 +7,27 @@
     padding-top: 70px;
 }
 
+.moovie-details-container h1.movie-details-loading {
+    color: white;
+    animation: details-loading 1s infinite;
+    margin-bottom: 10px;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    padding: 0px;
+}
+
+@keyframes details-loading {
+    0% {
+        opacity: 21%;
+    }
+    50% {
+        opacity: 60%;
+    }
+    100% {
+        opacity: 21%;
+    }
+}
+
 .moovie-details-container div.details {
     display: flex;
     flex-wrap: wrap;
@@ -20,13 +41,19 @@
     text-align: left;
 }
 
-.moovie-details-container .sinopsis h1 {
+.moovie-details-container .info h1 {
     font-size: 1.4em;
     color: var(--accent-text);
     margin: 0;
     margin-bottom: 10px;
 }
 
-.moovie-details-container .sinopsis p {
+.moovie-details-container .info h1.darkened-text {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.moovie-details-container .info p {
     color: rgba(255, 255, 255);
 }
