@@ -28,7 +28,11 @@ const MoovieDetailsInfo = ({ moovieData }) => {
         <h1>Dirigido Por</h1>
         <div className="moovie-tags">
           {directors.map((value, index) => {
-            return <span className="tag">{value._}</span>;
+            return (
+              <span key={value._} className="tag">
+                {value._}
+              </span>
+            );
           })}
         </div>
       </div>
