@@ -1,0 +1,15 @@
+.moovie-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 9px;
+}
+
+.moovie-tags span.tag {
+    padding: 4px 14px;
+    margin: 4px 4px;
+    background: var(--accent);
+    border-radius: 0px;
+    color: white;
+    font-size: 0.85em;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.08);
+}
