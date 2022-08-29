@@ -7,7 +7,6 @@ import DetailsImages from "../DetailsImages/DetailsImages";
 const MoovieDetails = ({ link = "" }) => {
   const [data, setData] = useState({});
   const [images, setImages] = useState([]);
-  const [imagesVisible, setImagesVisible] = useState(false);
 
   const scrapDatta = async () => {
     console.log("SCRAP DATA");
@@ -41,10 +40,19 @@ const MoovieDetails = ({ link = "" }) => {
 
   return (
     <div className="moovie-details-container">
-      <h1>Hola mundo</h1>
       <div className="details">
         <div className="section">{showImages}</div>
-        <div className="section"></div>
+        <div className="section">
+          <div className="sinopsis">
+            <h1>Sinopsis:</h1>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Eligendi, numquam! Possimus corporis quidem deleniti? Asperiores
+              sit deserunt modi tenetur delectus, corrupti omnis, eveniet
+              corporis facilis perspiciatis natus est officiis nesciunt.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
