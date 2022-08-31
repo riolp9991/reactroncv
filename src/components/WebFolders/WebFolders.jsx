@@ -9,8 +9,10 @@ import {
   faFolder,
   faFile,
   faFileImage,
+  faFileText,
   faFileVideo,
   faFileLines,
+  faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -96,6 +98,19 @@ const WebLink = ({
   )
     icon = faFileVideo;
 
+  const playIcon =
+    text.includes(".mp4") || text.includes(".mkv") ? (
+      <FlatButton fontSize="1em" text="" icon={faPlay} />
+    ) : (
+      <></>
+    );
+
+  const subtitleIcon = text.includes(".srt") ? (
+    <FlatButton text="" icon={faFileText} />
+  ) : (
+    <></>
+  );
+
   const downloadIcon = isFolder ? (
     <></>
   ) : (
@@ -116,8 +131,9 @@ const WebLink = ({
           {text}
         </h1>
         <div className="icons">
+          {playIcon}
+          {subtitleIcon}
           <FlatButton font-size="1em" text="" icon={faClipboard} />
-          {downloadIcon}
         </div>
       </div>
     </div>
