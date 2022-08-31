@@ -79,6 +79,13 @@ const WebLink = ({
   if (text.includes(".png") || text.includes(".jpg")) icon = faImage;
   if (text.includes(".mp4") || text.includes(".avi") || text.includes(".mpg"))
     icon = faFileVideo;
+
+  const downloadIcon = isFolder ? (
+    <></>
+  ) : (
+    <FlatButton font-size="1em" text="" icon={faDownload} />
+  );
+
   return (
     <div onClick={onClick} className="web-folder-link">
       <div className="content">
@@ -89,7 +96,7 @@ const WebLink = ({
         </h1>
         <div className="icons">
           <FlatButton font-size="1em" text="" icon={faClipboard} />
-          <FlatButton font-size="1em" text="" icon={faDownload} />
+          {downloadIcon}
         </div>
       </div>
     </div>
