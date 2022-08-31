@@ -4,7 +4,7 @@ const { sequelize } = require("../database");
 const Moovie = sequelize.define("Moovie", {
     title: {
         type: DataTypes.STRING,
-        unique: true,
+        //unique: true,
         allowNull: false,
     },
     year: {
@@ -13,6 +13,7 @@ const Moovie = sequelize.define("Moovie", {
     },
     link: {
         type: DataTypes.STRING,
+        unique: true,
         allowNull: false,
     },
 });

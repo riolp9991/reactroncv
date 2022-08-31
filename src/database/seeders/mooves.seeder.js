@@ -10,7 +10,7 @@ const extractLinks = async (url = URL) => {
         // Fetching HTML
         console.log(`Fetching: ${url}`);
         const response = await axios.get(url);
-        console.log({ response });
+        //console.log({ response });
         const html = response.data;
 
         // Using cheerio to extract <a> tags
@@ -30,6 +30,10 @@ const extractLinks = async (url = URL) => {
             text = text.replace("/", "");
             text = text.trim();
 
+            while (text.includes("_")) {
+                text = text.replace("_", " ");
+            }
+
             ScrappedLinks.push({
                 title: text, // get the text
                 year: $(element).text().substring(0, 4),
@@ -47,24 +51,61 @@ const extractLinks = async (url = URL) => {
     }
 };
 
+const MINOR_YEAR = 2000;
+
 const seedMoovies = async () => {
-    const items = await extractLinks();
+    const BASE_URL = "https://visuales.uclv.cu/Peliculas/Extranjeras/";
+
+    const items = await extractLinks(BASE_URL);
     for (let index = 0; index < items.length; index++) {
         const item = items[index];
-        console.log(`Creating: ${item.title}`);
-        const moovie = await Moovie.findOrCreate({
-            where: {
-                title: item.title,
-                year: item.year,
-            },
-            defaults: {
-                ...item,
-            },
-        });
+
+        const year = parseInt(
+            item.link.split("/")[item.link.split("/").length - 2]
+        );
+
+        if (!year || year < MINOR_YEAR) continue;
+
+        console.log(`LINK: ${item.link}`);
+
+        const MoviesOfItem = await extractLinks(item.link);
+
+        for (let i = 0; i < MoviesOfItem.length; i++) {
+            try {
+                const moovieData = MoviesOfItem[i];
+
+                if (
+                    !parseInt(moovieData.year) ||
+                    parseInt(moovieData.year) < MINOR_YEAR
+                )
+                    continue;
+
+                const moovie = await Moovie.findOrCreate({
+                    where: {
+                        title: item.title,
+                        year: item.year,
+                        link: moovieData.link,
+                    },
+                    defaults: {
+                        ...moovieData,
+                    },
+                });
+            } catch (error) {
+                console.error({ error });
+            }
+
+            //moovie.save();
+        }
+
+        console.log(`YEAR: ${year}`);
     }
 };
 
 module.exports = {
     extractLinks,
     seedMoovies,
+};
+module.exports = {
+  extractLinks,
+  seedMoovies,
 };
