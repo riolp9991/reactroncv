@@ -6,11 +6,14 @@ import { useEffect, useState } from "react";
 import DetailsImages from "../DetailsImages/DetailsImages";
 import WebFolders from "../../../../components/WebFolders/WebFolders";
 import MoovieVideo from "../MoovieVideo/MoovieVideo";
+import { useDispatch } from "react-redux";
+import { setVideoLink, setSubtitleLink } from "../../moovies.slice";
 
 const MoovieDetails = ({ link = "" }) => {
   const [data, setData] = useState({});
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   const scrapDatta = async () => {
     console.log("SCRAP DATA");
@@ -24,6 +27,8 @@ const MoovieDetails = ({ link = "" }) => {
 
   useEffect(() => {
     scrapDatta();
+    dispatch(setVideoLink(""));
+    dispatch(setSubtitleLink(""));
   }, [link]);
 
   useEffect(() => {
