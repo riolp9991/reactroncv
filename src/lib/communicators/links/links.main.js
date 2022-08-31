@@ -22,6 +22,7 @@ const extractLinks = async (url = URL) => {
 
     linkObjects.each((index, element) => {
       let text = $(element).text();
+
       const textSlices = text.split(".");
       let fixedText = "";
 
@@ -40,7 +41,7 @@ const extractLinks = async (url = URL) => {
 
     ScrappedLinks = ScrappedLinks.splice(4);
 
-    console.log(`Fetched ${ScrappedLinks.length} items`);
+    //console.log(`Fetched ${ScrappedLinks.length} items`);
     return ScrappedLinks;
   } catch (error) {
     console.log({ error });
@@ -48,14 +49,14 @@ const extractLinks = async (url = URL) => {
 };
 
 ipcMain.on("links-communication", async (event, args) => {
-  console.log({ args });
+  //console.log({ args });
   if (args.message === "open") {
     shell.openExternal(args.url);
     event.reply("linked", "opened the link");
   } else if (args.message === "scrap-links") {
-    console.log("GETTING LINKS");
+    //console.log("GETTING LINKS");
     const data = await extractLinks(args.url);
-    console.log(data);
+    //console.log(data);
     event.reply("links-fetched", data);
   } else event.reply("no-event");
 });
