@@ -17,10 +17,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
   const [currentLink, setCurrentLink] = useState(link);
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const searchLinks = async () => {
+    setLoading(true);
     const links = await getLinks(currentLink);
     setItems(links);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -35,6 +38,12 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
   useEffect(() => {
     setCurrentLink(link);
   }, [link]);
+
+  const loadingText = loading ? (
+    <span className="is-loading">Cargando</span>
+  ) : (
+    <></>
+  );
 
   const linksList =
     items && items.length > 0 ? (
@@ -56,6 +65,7 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
       className="web-folder-viewer"
       style={{ "--web-folder-background": background }}
     >
+      {loadingText}
       <span className="link">{currentLink}</span>
       <span className="separator" />
       {linksList}
