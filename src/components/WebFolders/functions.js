@@ -4,31 +4,35 @@ const cheerio = require("cheerio");
 
 export const getLinks = async (link = "") => {
     //const response = await axios.get(link);
+    console.log("HELLO");
+    const response = await fetch(link, { mode: "no-cors" });
 
-    //if (!response.data) return [];
+    console.log({ response });
 
-    //const html = response.data;
-    //console.log({ html });
+    if (!response.data) return [];
 
-    //const $ = cheerio.load(html);
+    const html = response.data;
+    console.log({ html });
 
-    //const links = $("a");
+    const $ = cheerio.load(html);
 
-    //let scrappedLinks = [];
+    const links = $("a");
 
-    //links.each((_, element) => {
-    //let text = $(element).text().substring(5);
-    //while (text.includes(".")) {
-    //text = text.replace(".", " ");
-    //}
-    //text = text.replace("/", "");
-    //text = text.trim();
+    let scrappedLinks = [];
 
-    //scrappedLinks.push({
-    //title: text, // get the text
-    //link: `${link}${$(element).attr("href")}`,
-    //});
-    //});
+    links.each((_, element) => {
+        let text = $(element).text().substring(5);
+        while (text.includes(".")) {
+            text = text.replace(".", " ");
+        }
+        text = text.replace("/", "");
+        text = text.trim();
 
-    return [];
+        scrappedLinks.push({
+            title: text, // get the text
+            link: `${link}${$(element).attr("href")}`,
+        });
+    });
+
+    return scrappedLinks;
 };

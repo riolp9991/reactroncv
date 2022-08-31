@@ -3,9 +3,9 @@ import { getLinks } from "./functions";
 import { useState, useEffect } from "react";
 
 const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
-  console.log({ link });
+  //console.log({ link });
   const [currentLink, setCurrentLink] = useState(link);
-  console.log({ currentLink });
+  //console.log({ currentLink });
   const [items, setItems] = useState([]);
 
   const searchLinks = async () => {
