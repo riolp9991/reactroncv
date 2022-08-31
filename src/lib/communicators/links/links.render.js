@@ -16,10 +16,11 @@ export const openLink = (link) => {
 export const getLinks = (link) => {
     return new Promise((resolve) => {
         ipcRenderer.once("links-fetched", (_, args) => {
+            console.log("LINKS");
             resolve(args);
         });
         ipcRenderer.send("links-communication", {
-            message: "getLinks",
+            message: "scrap-links",
             url: link,
         });
     });

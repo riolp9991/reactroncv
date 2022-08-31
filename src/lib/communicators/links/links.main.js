@@ -50,8 +50,10 @@ ipcMain.on("links-communication", async (event, args) => {
     if ((args.message = "open")) {
         shell.openExternal(args.url);
         event.reply("linked", "opened the link");
-    } else if ((args.message = "getLinks")) {
+    } else if ((args.message = "scrap-links")) {
+        console.log("GETTING LINKS");
         const data = await extractLinks(args.url);
+        console.log(data);
         event.reply("links-fetched", data);
     } else event.reply("no-event");
 });

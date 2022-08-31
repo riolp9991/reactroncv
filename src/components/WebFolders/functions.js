@@ -1,38 +1,6 @@
-import axios from "axios";
-//import { Cheerio as cheerio } from "cheerio";
-const cheerio = require("cheerio");
-
+import { getLinks as findLinks } from "../../lib/communicators/links/links.render";
 export const getLinks = async (link = "") => {
-    //const response = await axios.get(link);
-    console.log("HELLO");
-    const response = await fetch(link, { mode: "no-cors" });
-
-    console.log({ response });
-
-    if (!response.data) return [];
-
-    const html = response.data;
-    console.log({ html });
-
-    const $ = cheerio.load(html);
-
-    const links = $("a");
-
-    let scrappedLinks = [];
-
-    links.each((_, element) => {
-        let text = $(element).text().substring(5);
-        while (text.includes(".")) {
-            text = text.replace(".", " ");
-        }
-        text = text.replace("/", "");
-        text = text.trim();
-
-        scrappedLinks.push({
-            title: text, // get the text
-            link: `${link}${$(element).attr("href")}`,
-        });
-    });
-
-    return scrappedLinks;
+    const data = await findLinks(link);
+    console.log({ FETCHED_DATA: data });
+    return [];
 };
