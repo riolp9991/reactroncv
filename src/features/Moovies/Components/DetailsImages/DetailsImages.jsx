@@ -13,7 +13,7 @@ const DetailsImages = ({ images = [] }) => {
         {images.map((value, index) => {
           return (
             <div onClick={() => setIndex(index)} className="img-container">
-              <img src={value.link} alt={value.fixedText} srcset="" />
+              <img src={value.link} alt={value.fixedText} />
             </div>
           );
         })}
