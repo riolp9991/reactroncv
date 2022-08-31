@@ -1,65 +1,74 @@
 .moovie-details-container {
-    min-height: 100vh;
-    padding: 2em;
-    background: #383d46;
-    text-align: center;
-    /*margin-top: 30px;*/
-    padding-top: 70px;
+  min-height: 100vh;
+  padding: 2em;
+  background: #383d46;
+  text-align: center;
+  /*margin-top: 30px;*/
+  padding-top: 70px;
 }
 
 .moovie-details-container h1.movie-details-loading {
-    color: white;
-    animation: details-loading 1s infinite;
-    margin-bottom: 10px;
-    font-size: 1.6em;
-    text-transform: uppercase;
-    padding: 0px;
+  color: white;
+  animation: details-loading 1s infinite;
+  margin-bottom: 10px;
+  font-size: 1.6em;
+  text-transform: uppercase;
+  padding: 0px;
 }
 
 @keyframes details-loading {
-    0% {
-        opacity: 21%;
-    }
-    50% {
-        opacity: 60%;
-    }
-    100% {
-        opacity: 21%;
-    }
+  0% {
+    opacity: 21%;
+  }
+  50% {
+    opacity: 60%;
+  }
+  100% {
+    opacity: 21%;
+  }
 }
 
 .moovie-details-container div.details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    transition: 0.3s;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  transition: 0.3s;
 }
 
 .moovie-details-container .section:nth-child(1) {
-    text-align: center;
-    justify-items: center;
+  text-align: center;
+  justify-items: center;
 }
 .moovie-details-container .section:nth-child(2) {
-    flex: 1;
-    text-align: left;
-    min-width: 400px;
+  flex: 1;
+  text-align: left;
+  min-width: 400px;
 }
 
 .moovie-details-container .info h1 {
-    font-size: 1.4em;
-    color: var(--accent-text);
-    margin: 0;
-    margin-bottom: 10px;
+  font-size: 1.4em;
+  color: var(--accent-text);
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 .moovie-details-container .info h1.darkened-text {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 1rem;
-    text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+  text-align: center;
 }
 
 .moovie-details-container .info p {
-    color: rgba(255, 255, 255);
+  color: rgba(255, 255, 255);
+}
+
+.moovie-details-container h1.subtitle {
+  margin: 0;
+  font-size: 1.4em;
+  color: var(--accent-text);
+  text-align: left;
+  margin-top: 10px;
+  padding-left: 6px;
 }

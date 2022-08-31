@@ -70,6 +70,8 @@ const MoovieDetails = ({ link = "" }) => {
           <div className="info">{moovieDetails}</div>
         </div>
       </div>
+      <span className="separator"></span>
+      <h1 className="subtitle">Contenido de la carpeta</h1>
       <WebFolders link={link} />
     </div>
   );
