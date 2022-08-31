@@ -15,8 +15,13 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
   };
 
   useEffect(() => {
+    if (!currentLink.includes(link)) setCurrentLink(link);
     searchLinks();
   }, [currentLink]);
+
+  useEffect(() => {
+    //setCurrentLink(link);
+  }, [link]);
 
   useEffect(() => {
     setCurrentLink(link);
@@ -25,7 +30,13 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
   const linksList =
     items && items.length > 0 ? (
       items.map((element, index) => {
-        return <WebLink key={`link ${index}`} text={element.text} />;
+        return (
+          <WebLink
+            onClick={() => setCurrentLink(element.link)}
+            key={`link ${index}`}
+            text={element.text}
+          />
+        );
       })
     ) : (
       <h1 className="nothing-found">No se han cargado los ficheros</h1>
