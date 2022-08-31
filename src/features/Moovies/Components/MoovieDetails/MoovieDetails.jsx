@@ -73,6 +73,7 @@ const MoovieDetails = ({ link = "" }) => {
       <span className="separator"></span>
       <h1 className="subtitle">Contenido de la carpeta</h1>
       <WebFolders link={link} />
+      <span className="separator"></span>
     </div>
   );
 };
