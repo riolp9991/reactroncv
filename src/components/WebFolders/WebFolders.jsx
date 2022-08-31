@@ -8,8 +8,9 @@ import {
   faClipboard,
   faFolder,
   faFile,
-  faImage,
+  faFileImage,
   faFileVideo,
+  faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -40,7 +41,7 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
       items.map((element, index) => {
         return (
           <WebLink
-            onClick={() => setCurrentLink(element.link)}
+            folderClick={() => setCurrentLink(element.link)}
             key={`link ${index}`}
             text={element.text}
           />
@@ -64,7 +65,7 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
 
 const WebLink = ({
   text = "HELLo",
-  onClick = () => {
+  folderClick = () => {
     console.log(text);
   },
   link = "",
@@ -73,11 +74,16 @@ const WebLink = ({
   const isFolder = text.split(".")[0] == "" || text.split(".").length == 1;
   console.log(isFolder);
 
-  let icon = faFile;
+  let icon = faFileLines;
 
   if (isFolder) icon = faFolder;
-  if (text.includes(".png") || text.includes(".jpg")) icon = faImage;
-  if (text.includes(".mp4") || text.includes(".avi") || text.includes(".mpg"))
+  if (text.includes(".png") || text.includes(".jpg")) icon = faFileImage;
+  if (
+    text.includes(".mp4") ||
+    text.includes(".avi") ||
+    text.includes(".mpg") ||
+    text.includes(".mkv")
+  )
     icon = faFileVideo;
 
   const downloadIcon = isFolder ? (
@@ -87,7 +93,12 @@ const WebLink = ({
   );
 
   return (
-    <div onClick={onClick} className="web-folder-link">
+    <div
+      onClick={() => {
+        if (isFolder) folderClick();
+      }}
+      className="web-folder-link"
+    >
       <div className="content">
         <h1>
           <FontAwesomeIcon icon={icon} />
