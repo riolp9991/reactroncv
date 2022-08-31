@@ -28,6 +28,7 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
       style={{ "--web-folder-background": background }}
     >
       <span className="link">{currentLink}</span>
+      <span className="separator" />
     </div>
   );
 };
