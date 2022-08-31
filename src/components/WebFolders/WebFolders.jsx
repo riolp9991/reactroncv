@@ -10,8 +10,8 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
 
   const searchLinks = async () => {
     const links = await getLinks(currentLink);
-    setItems(links);
     console.log({ items });
+    setItems(links);
   };
 
   useEffect(() => {
