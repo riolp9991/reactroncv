@@ -59,7 +59,7 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
             folderClick={() => setCurrentLink(element.link)}
             key={`link ${index}`}
             text={element.text}
-            links={element.link}
+            link={element.link}
           />
         );
       })
@@ -110,6 +110,7 @@ const WebLink = ({
         icon={faPlay}
         onClick={(e) => {
           e.stopPropagation();
+          console.log("VIDEO");
           dispatch(setVideoLink(link));
         }}
       />
@@ -123,6 +124,7 @@ const WebLink = ({
       icon={faFileText}
       onClick={(e) => {
         e.stopPropagation();
+        console.log("SUBTITLE");
         dispatch(setSubtitleLink(link));
       }}
     />

@@ -5,6 +5,7 @@ import MoovieDetailsInfo from "./MoovieDetailsInfo/MoovieDetailsInfo";
 import { useEffect, useState } from "react";
 import DetailsImages from "../DetailsImages/DetailsImages";
 import WebFolders from "../../../../components/WebFolders/WebFolders";
+import MoovieVideo from "../MoovieVideo/MoovieVideo";
 
 const MoovieDetails = ({ link = "" }) => {
   const [data, setData] = useState({});
@@ -74,6 +75,8 @@ const MoovieDetails = ({ link = "" }) => {
       <h1 className="subtitle">Contenido de la carpeta</h1>
       <WebFolders link={link} />
       <span className="separator"></span>
+      <h1 className="subtitle">Video</h1>
+      <MoovieVideo />
     </div>
   );
 };
