@@ -4,6 +4,7 @@ import { scrapMoovieData } from "../../../../database/comunicators/moovies/moovi
 import MoovieDetailsInfo from "./MoovieDetailsInfo/MoovieDetailsInfo";
 import { useEffect, useState } from "react";
 import DetailsImages from "../DetailsImages/DetailsImages";
+import WebFolders from "../../../../components/WebFolders/WebFolders";
 
 const MoovieDetails = ({ link = "" }) => {
   const [data, setData] = useState({});
@@ -69,6 +70,7 @@ const MoovieDetails = ({ link = "" }) => {
           <div className="info">{moovieDetails}</div>
         </div>
       </div>
+      <WebFolders link={link} />
     </div>
   );
 };
