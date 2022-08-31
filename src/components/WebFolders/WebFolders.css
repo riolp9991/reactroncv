@@ -11,6 +11,8 @@
 .web-folder-viewer h1.nothing-found {
   font-size: 1em;
   color: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  text-align: center;
 }
 
 .web-folder-viewer span.link {
