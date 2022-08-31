@@ -52,6 +52,6 @@ ipcMain.on("links-communication", async (event, args) => {
         event.reply("linked", "opened the link");
     } else if ((args.message = "getLinks")) {
         const data = await extractLinks(args.url);
-        event.reply(data);
+        event.reply("links-fetched", data);
     } else event.reply("no-event");
 });
