@@ -10,7 +10,8 @@
 }
 
 .moovie-video-text {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.4);
     font-size: 1em;
     margin: 0;
+    text-align: justify;
 }

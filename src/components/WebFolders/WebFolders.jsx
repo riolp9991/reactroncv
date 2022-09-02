@@ -119,15 +119,16 @@ const WebLink = ({
     );
 
   const subtitleIcon = text.includes(".srt") ? (
-    <FlatButton
-      text=""
-      icon={faFileText}
-      onClick={(e) => {
-        e.stopPropagation();
-        console.log("SUBTITLE");
-        dispatch(setSubtitleLink(link));
-      }}
-    />
+    //<FlatButton
+    //text=""
+    //icon={faFileText}
+    //onClick={(e) => {
+    //e.stopPropagation();
+    //console.log("SUBTITLE");
+    //dispatch(setSubtitleLink(link));
+    //}}
+    ///>
+    <></>
   ) : (
     <></>
   );

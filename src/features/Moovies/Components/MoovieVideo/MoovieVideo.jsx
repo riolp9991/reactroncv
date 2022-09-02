@@ -37,7 +37,11 @@ const MoovieVideo = (props) => {
     ) : (
       <h1 className="moovie-video-text">
         No se ha seleccionado un video, ten en cuenta que solo se pueden
-        reproducir archivos 'mp4' y 'mkv'
+        reproducir archivos 'mp4' y 'mkv', ademas algunos archivos 'mp4' no
+        utilizan los codecs de dicho formato y puede que no se pueda reproducir,
+        por eso siempre te recomendamos descargarlos. <br /> <br />
+        Actualmente nos encontramos trabajando en una manera de agregar
+        subtitulos al reproductor;
       </h1>
     );
 
