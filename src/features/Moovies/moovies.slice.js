@@ -31,6 +31,8 @@ export const moovieSlice = createSlice({
         },
         setVideoLink: (state, action) => {
             state.videoLink = action.payload;
+            console.log({ STATE: state.videoLink });
+            console.log("Video SETTED");
         },
         setSubtitleLink: (state, action) => {
             state.subtitleLink = action.payload;

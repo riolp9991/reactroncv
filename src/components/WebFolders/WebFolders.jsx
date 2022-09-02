@@ -2,12 +2,16 @@ import "./WebFolders.css";
 import { getLinks } from "./functions";
 import { useState, useEffect } from "react";
 import { FlatButton } from "../FlatButton/index.js";
+import { useDispatch } from "react-redux";
+import {
+  setSubtitleLink,
+  setVideoLink,
+} from "../../features/Moovies/moovies.slice.js";
 
 import {
   faDownload,
   faClipboard,
   faFolder,
-  faFile,
   faFileImage,
   faFileText,
   faFileVideo,
@@ -55,6 +59,7 @@ const WebFolders = ({ link = "", background = "var(--solid-bg)" }) => {
             folderClick={() => setCurrentLink(element.link)}
             key={`link ${index}`}
             text={element.text}
+            link={element.link}
           />
         );
       })
@@ -82,9 +87,8 @@ const WebLink = ({
   },
   link = "",
 }) => {
-  console.log(text.split("."));
-  const isFolder = text.split(".")[0] == "" || text.split(".").length == 1;
-  console.log(isFolder);
+  const dispatch = useDispatch();
+  const isFolder = text.split(".")[0] === "" || text.split(".").length === 1;
 
   let icon = faFileLines;
 
@@ -100,13 +104,31 @@ const WebLink = ({
 
   const playIcon =
     text.includes(".mp4") || text.includes(".mkv") ? (
-      <FlatButton fontSize="1em" text="" icon={faPlay} />
+      <FlatButton
+        fontSize="1em"
+        text=""
+        icon={faPlay}
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log("VIDEO");
+          dispatch(setVideoLink(link));
+        }}
+      />
     ) : (
       <></>
     );
 
   const subtitleIcon = text.includes(".srt") ? (
-    <FlatButton text="" icon={faFileText} />
+    //<FlatButton
+    //text=""
+    //icon={faFileText}
+    //onClick={(e) => {
+    //e.stopPropagation();
+    //console.log("SUBTITLE");
+    //dispatch(setSubtitleLink(link));
+    //}}
+    ///>
+    <></>
   ) : (
     <></>
   );

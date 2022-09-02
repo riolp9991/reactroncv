@@ -5,15 +5,30 @@ import MoovieDetailsInfo from "./MoovieDetailsInfo/MoovieDetailsInfo";
 import { useEffect, useState } from "react";
 import DetailsImages from "../DetailsImages/DetailsImages";
 import WebFolders from "../../../../components/WebFolders/WebFolders";
+import MoovieVideo from "../MoovieVideo/MoovieVideo";
+import { useDispatch } from "react-redux";
+import { setVideoLink, setSubtitleLink } from "../../moovies.slice";
 
 const MoovieDetails = ({ link = "" }) => {
   const [data, setData] = useState({});
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   const scrapDatta = async () => {
     console.log("SCRAP DATA");
-    const fetchedData = await scrapMoovieData(link);
+    //const fetchedData = await scrapMoovieData(link);
+    let fetchedData;
+    try {
+      console.log("TRY CATCH ERROR");
+      fetchedData = scrapMoovieData(link).catch((reason) =>
+        console.error(reason)
+      );
+    } catch (error) {
+      console.err({ error });
+      setLoading(false);
+      throw error;
+    }
     console.log({ data: fetchedData });
     setData(fetchedData);
     setLoading(false);
@@ -23,6 +38,8 @@ const MoovieDetails = ({ link = "" }) => {
 
   useEffect(() => {
     scrapDatta();
+    dispatch(setVideoLink(""));
+    dispatch(setSubtitleLink(""));
   }, [link]);
 
   useEffect(() => {
@@ -74,6 +91,8 @@ const MoovieDetails = ({ link = "" }) => {
       <h1 className="subtitle">Contenido de la carpeta</h1>
       <WebFolders link={link} />
       <span className="separator"></span>
+      <h1 className="subtitle">Video</h1>
+      <MoovieVideo />
     </div>
   );
 };
