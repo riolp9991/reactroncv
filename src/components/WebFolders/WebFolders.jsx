@@ -88,7 +88,7 @@ const WebLink = ({
   link = "",
 }) => {
   const dispatch = useDispatch();
-  const isFolder = text.split(".")[0] == "" || text.split(".").length == 1;
+  const isFolder = text.split(".")[0] === "" || text.split(".").length === 1;
 
   let icon = faFileLines;
 

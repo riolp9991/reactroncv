@@ -2,6 +2,8 @@ const { ipcMain } = require("electron");
 const { Moovie } = require("../../models/moovies");
 const { Op } = require("sequelize");
 
+const fixLink = (url) => {};
+
 const findTheMoovies = async (title = "", year = "", limit = 0, offset = 0) => {
   console.log("Fetching Moovies");
   const data = await Moovie.findAll({
@@ -32,15 +34,15 @@ const findTheMoovies = async (title = "", year = "", limit = 0, offset = 0) => {
     },
   });
 
-  console.table({ data });
+  //console.table({ data });
 
   return { data, count };
 };
 
 ipcMain.on("moovies-communication", async (event, args) => {
-  console.log({ args });
+  //console.log({ args });
   if (args.message === "find") {
-    console.log("SEARCHING");
+    //console.log("SEARCHING");
     const data = await findTheMoovies(
       args.title,
       args.year,
@@ -50,15 +52,20 @@ ipcMain.on("moovies-communication", async (event, args) => {
     event.reply("fetched-moovies", data);
   } else event.reply("no-event");
   if (args.message === "findOne") {
-    console.log("SEARCHING BY ID");
+    //console.log("SEARCHING BY ID");
     const data = await Moovie.findByPk(args.id);
     event.reply("fetched-moovie", data);
   }
   if (args.message === "fetchMoovieData") {
-    console.log("Searching moovie online data");
-    console.log({ args });
-    const data = await getMoovieOnlineData(args.link);
-    event.reply("scrapped-data", data);
+    //console.log("Searching moovie online data");
+    //console.log({ args });
+    try {
+      const data = await getMoovieOnlineData(args.link);
+      event.reply("scrapped-data", data);
+    } catch (error) {
+      console.error({ error });
+      throw error;
+    }
   }
 });
 
@@ -67,8 +74,13 @@ const axios = require("axios");
 const xml2js = require("xml2js");
 
 const getMoovieOnlineData = async (moovieLink = "") => {
-  console.log(`FETCHING MOOVIE LINK: ${moovieLink}`);
-  const response = await axios.get(moovieLink);
+  //console.log(`FETCHING MOOVIE LINK: ${moovieLink}`);
+  let response;
+  try {
+    response = await axios.get(moovieLink);
+  } catch (error) {
+    throw error;
+  }
   const html = response.data;
 
   const $ = cheerio.load(html);
@@ -96,7 +108,7 @@ const getMoovieOnlineData = async (moovieLink = "") => {
     });
   });
 
-  console.table(SCRAPPED_LINKS);
+  //console.table(SCRAPPED_LINKS);
 
   const nfoMatch = SCRAPPED_LINKS.find((element) => {
     if (element.fixedText.includes(".nfo")) {

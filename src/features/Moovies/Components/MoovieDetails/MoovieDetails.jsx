@@ -17,7 +17,18 @@ const MoovieDetails = ({ link = "" }) => {
 
   const scrapDatta = async () => {
     console.log("SCRAP DATA");
-    const fetchedData = await scrapMoovieData(link);
+    //const fetchedData = await scrapMoovieData(link);
+    let fetchedData;
+    try {
+      console.log("TRY CATCH ERROR");
+      fetchedData = scrapMoovieData(link).catch((reason) =>
+        console.error(reason)
+      );
+    } catch (error) {
+      console.err({ error });
+      setLoading(false);
+      throw error;
+    }
     console.log({ data: fetchedData });
     setData(fetchedData);
     setLoading(false);

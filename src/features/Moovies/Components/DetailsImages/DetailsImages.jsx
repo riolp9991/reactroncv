@@ -12,7 +12,11 @@ const DetailsImages = ({ images = [] }) => {
       <div className="images-list">
         {images.map((value, index) => {
           return (
-            <div onClick={() => setIndex(index)} className="img-container">
+            <div
+              key={value.link}
+              onClick={() => setIndex(index)}
+              className="img-container"
+            >
               <img src={value.link} alt={value.fixedText} />
             </div>
           );
