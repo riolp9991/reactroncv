@@ -21,9 +21,7 @@ const MoovieDetails = ({ link = "" }) => {
     let fetchedData;
     try {
       console.log("TRY CATCH ERROR");
-      fetchedData = scrapMoovieData(link).catch((reason) =>
-        console.error(reason)
-      );
+      fetchedData = await scrapMoovieData(link);
     } catch (error) {
       console.err({ error });
       setLoading(false);

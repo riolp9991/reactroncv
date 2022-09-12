@@ -1,6 +1,8 @@
 import "./MoovieDetailsInfo.css";
 
 const MoovieDetailsInfo = ({ moovieData }) => {
+  console.log({ moovieData });
+  console.log("MOOVIEDETAILSINFO");
   let actors = [];
   actors =
     moovieData.actor.length > 10
